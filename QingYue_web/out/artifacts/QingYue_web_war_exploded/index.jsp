@@ -11,6 +11,6 @@
     <title>$Title$</title>
   </head>
   <body>
-  你好，web
+  $END$
   </body>
 </html>

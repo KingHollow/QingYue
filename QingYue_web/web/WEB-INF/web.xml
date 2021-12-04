@@ -3,4 +3,33 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
+    <filter><!--filter类路径配置-->
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>com.javaweb.qingyue.filter.EncodingFilter</filter-class><!-- 全路径 从根包开始一直到类名 -->
+    </filter>
+    <filter-mapping><!--filter类映射配置-->
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern><!-- /* 即为过滤所有 -->
+    </filter-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.RegisterServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/Register</url-pattern>
+    </servlet-mapping>
 </web-app>
