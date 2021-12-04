@@ -15,7 +15,7 @@ public class UserDaoImpl implements UserDao {
         boolean flag = false;
         try {
             DBconn.init();
-            ResultSet rs = DBconn.selectSql("select * from user where Name="+name+" and Password="+pwd);
+            ResultSet rs = DBconn.selectSql("select * from user where Name='"+name+"' and Password='"+pwd+"'");
             while(rs.next()){
                 if(rs.getString("Name").equals(name) && rs.getString("Password").equals(pwd)){
                     flag = true;
@@ -33,7 +33,7 @@ public class UserDaoImpl implements UserDao {
     public boolean register(User user) throws SQLException {
         boolean flag = false;
         DBconn.init();
-        ResultSet j = DBconn.selectSql("select * from user where Name ="+user.getName());
+        ResultSet j = DBconn.selectSql("select * from user where Name ='"+user.getName()+"'");
         if(j.next()){
             return flag;
         }
