@@ -1,7 +1,7 @@
 package com.javaweb.qingyue.entity;
 
 public class User {
-    private String id;
+    private int id;
     private String name;
     private String password;
     private String nickname;
@@ -10,11 +10,11 @@ public class User {
     private String headshoturl;
     private String signature;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -26,11 +26,11 @@ public class User {
         this.name = name;
     }
 
-    public String getPwd() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPwd(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -58,11 +58,11 @@ public class User {
         this.region = region;
     }
 
-    public String getHeadshotUrl() {
+    public String getHeadshoturl() {
         return headshoturl;
     }
 
-    public void setHeadshotUrl(String headshoturl) {
+    public void setHeadshoturl(String headshoturl) {
         this.headshoturl = headshoturl;
     }
 
