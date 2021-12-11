@@ -97,6 +97,30 @@ public class UserDaoImpl implements UserDao {
         return null;
     }
 
+    public User getUserByUsername(String username) {
+        User user = new User();
+        String sql = "select * from user where Name ='"+username+"'";
+        try {
+            DBconn.init();
+            ResultSet rs = DBconn.selectSql(sql);
+            if (rs.next()){
+                user.setId(rs.getInt("ID"));
+                user.setName(rs.getString("Name"));
+                user.setPassword(rs.getString("Password"));
+                user.setNickname(rs.getString("Nickname"));
+                user.setSex(rs.getString("Sex"));
+                user.setRegion(rs.getString("Region"));
+                user.setHeadshoturl(rs.getString("Headshoturl"));
+                user.setSignature(rs.getString("Signature"));
+                DBconn.closeConn();
+                return user;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @Override
     public boolean delete(int id) {
         boolean flag = false;

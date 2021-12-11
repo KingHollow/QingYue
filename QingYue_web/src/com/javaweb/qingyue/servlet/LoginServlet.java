@@ -28,16 +28,14 @@ public class LoginServlet extends HttpServlet { //需要继承HttpServlet  并�
             String password = request.getParameter("password");
 
             UserDao ud = new UserDaoImpl();
-            Map<String, String> params = new HashMap<>();
             JSONObject jsonObject = new JSONObject();
 
             if(ud.login(name, password)){
-                params.put("Result", "success");
+                jsonObject.put("Result", "success");
             }else{
-                params.put("Result", "failed");
+                jsonObject.put("Result", "failed");
             }
 
-            jsonObject.put("params", params);
             out.write(jsonObject.toString());
         }
     }
