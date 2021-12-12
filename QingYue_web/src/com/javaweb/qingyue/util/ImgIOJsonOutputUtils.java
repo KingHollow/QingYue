@@ -3,6 +3,7 @@ package com.javaweb.qingyue.util;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -13,6 +14,7 @@ public class ImgIOJsonOutputUtils {
      * @return 编码后的字符串
      * */
     public static String encode(byte[] bytes){
+        System.out.println(14);
         return new BASE64Encoder().encode(bytes);
     }
 
@@ -49,9 +51,13 @@ public class ImgIOJsonOutputUtils {
      * @throws IOException
      * */
     public static String encodeImage(String imgUrl) throws IOException{
-        FileInputStream fis = new FileInputStream(imgUrl);
+        System.out.println(imgUrl.replaceAll("\\\\", "/"));
+        FileInputStream fis = new FileInputStream(imgUrl.replaceAll("\\\\", "/"));
+        System.out.println(11);
         byte[] rs = new byte[fis.available()];
+        System.out.println(12);
         fis.read(rs);
+        System.out.println(13);
         fis.close();
         return encode(rs);
     }
