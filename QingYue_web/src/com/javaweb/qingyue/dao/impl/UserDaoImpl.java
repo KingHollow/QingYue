@@ -107,11 +107,11 @@ public class UserDaoImpl implements UserDao {
                 user.setId(rs.getInt("ID"));
                 user.setName(rs.getString("Name"));
                 user.setPassword(rs.getString("Password"));
-                user.setNickname(rs.getString("Nickname"));
-                user.setSex(rs.getString("Sex"));
-                user.setRegion(rs.getString("Region"));
+                user.setNickname(rs.getString("Nickname") == null ? "" : rs.getString("Nickname"));
+                user.setSex(rs.getString("Sex") == null ? "" : rs.getString("Sex"));
+                user.setRegion(rs.getString("Region") == null ? "" : rs.getString("Region"));
                 user.setHeadshoturl(rs.getString("Headshoturl"));
-                user.setSignature(rs.getString("Signature"));
+                user.setSignature(rs.getString("Signature") == null ? "" : rs.getString("Signature"));
                 DBconn.closeConn();
                 return user;
             }

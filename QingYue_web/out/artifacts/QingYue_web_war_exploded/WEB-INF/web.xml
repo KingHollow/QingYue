@@ -32,4 +32,14 @@
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/Register</url-pattern>
     </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>MineInitServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.MineInitServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>MineInitServlet</servlet-name>
+        <url-pattern>/MineInit</url-pattern>
+    </servlet-mapping>
 </web-app>

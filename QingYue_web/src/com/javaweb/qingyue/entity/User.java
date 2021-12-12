@@ -1,13 +1,13 @@
 package com.javaweb.qingyue.entity;
 
 public class User {
-    private int id;
-    private String name;
-    private String password;
-    private String nickname;
-    private String sex;
-    private String region;
-    private String headshoturl;
+    private int id = 0;
+    private String name = "";
+    private String password = "";
+    private String nickname = "";
+    private String sex = "";
+    private String region = "";
+    private String headshoturl = "";
     private String signature;
 
     public int getId() {

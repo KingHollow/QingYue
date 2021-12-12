@@ -31,6 +31,7 @@ public class RUserLabelDao {
             list.add(rs.getString("Name"));
         }
         while(list.size() < 3) list.add("");
+        DBconn.closeConn();
         return list;
     }
 }
