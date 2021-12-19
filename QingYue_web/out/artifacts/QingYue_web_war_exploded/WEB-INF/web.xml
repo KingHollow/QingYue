@@ -42,4 +42,14 @@
         <servlet-name>MineInitServlet</servlet-name>
         <url-pattern>/MineInit</url-pattern>
     </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>InfoModifyServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.InfoModifyServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>InfoModifyServlet</servlet-name>
+        <url-pattern>/InfoModify</url-pattern>
+    </servlet-mapping>
 </web-app>

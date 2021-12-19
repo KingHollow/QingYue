@@ -6,7 +6,7 @@ public class Song {
     private String singer = "";
     private String album = "";
     private String lyric = "";
-    private String picUrl = "\\usr\\source\\songpic\\null.jpg";
+    private String picUrl = "/usr/source/songpic/null.jpg";
 
     public int getId() { return id; }
 

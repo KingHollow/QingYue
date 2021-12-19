@@ -1,8 +1,11 @@
 package com.javaweb.qingyue.util;
 
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
+import javax.imageio.stream.FileImageOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,7 +17,6 @@ public class ImgIOJsonOutputUtils {
      * @return 编码后的字符串
      * */
     public static String encode(byte[] bytes){
-        System.out.println(14);
         return new BASE64Encoder().encode(bytes);
     }
 
@@ -51,14 +53,31 @@ public class ImgIOJsonOutputUtils {
      * @throws IOException
      * */
     public static String encodeImage(String imgUrl) throws IOException{
-        System.out.println(imgUrl.replaceAll("\\\\", "/"));
-        FileInputStream fis = new FileInputStream(imgUrl.replaceAll("\\\\", "/"));
-        System.out.println(11);
+        FileInputStream fis = new FileInputStream(imgUrl);
         byte[] rs = new byte[fis.available()];
-        System.out.println(12);
         fis.read(rs);
-        System.out.println(13);
         fis.close();
         return encode(rs);
+    }
+
+    //base64转为bitmap
+    public static byte[] base64ToBytes(String base64Data) throws IOException {
+        return decode(base64Data);
+    }
+
+
+    //byte数组到图片到硬盘上
+    public static void saveImage(String base64Data, String path) throws IOException {
+        byte[] data = base64ToBytes(base64Data);
+        if(data.length<3||path.equals("")) return;//判断输入的byte是否为空
+        try{
+            FileImageOutputStream imageOutput = new FileImageOutputStream(new File(path));//打开输入流
+            imageOutput.write(data, 0, data.length);//将byte写入硬盘
+            imageOutput.close();
+            System.out.println("Make Picture success,Please find image in " + path);
+        } catch(Exception ex) {
+            System.out.println("Exception: " + ex);
+            ex.printStackTrace();
+        }
     }
 }

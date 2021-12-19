@@ -97,6 +97,13 @@ public class UserDaoImpl implements UserDao {
         return null;
     }
 
+    @Override
+    public boolean infoModify(String username, String nickname, String sex, String region, String signature) {
+        UserDao ud = new UserDaoImpl();
+        User user = ud.getUserByUsername(username);
+        return update(user.getId(), user.getName(), user.getPassword(), nickname, sex, region, user.getHeadshoturl(), signature);
+    }
+
     public User getUserByUsername(String username) {
         User user = new User();
         String sql = "select * from user where Name ='"+username+"'";
