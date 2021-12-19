@@ -14,4 +14,5 @@ public interface UserDao {
     public boolean update(int id, String name, String password, String nickname, String sex, String region, String headshoturl, String signature) ;//更新用户信息
     public User getUserByUsername(String username);
     public User getUserById(int id);
+    public boolean infoModify(String username, String nickname, String sex, String region, String signature);
 }

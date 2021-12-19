@@ -42,7 +42,7 @@ public class RegisterServlet extends HttpServlet {
                 user.setNickname("未命名用户");
                 user.setRegion("");
                 user.setSex("男");
-                user.setHeadshoturl("\\\\usr\\\\source\\\\headshot\\\\null.jpg");
+                user.setHeadshoturl("/usr/source/headshot/null.jpg");
                 user.setSignature("");
                 if(ud.register(user)){
                     jsonObject.put("Result", "success");

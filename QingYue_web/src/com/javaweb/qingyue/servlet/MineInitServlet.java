@@ -42,18 +42,13 @@ public class MineInitServlet extends HttpServlet {
             jsonObject.put("Sex", user.getSex());
             jsonObject.put("Region", user.getRegion());
             jsonObject.put("Signature", user.getSignature());
+            System.out.println(user.getHeadshoturl());
             jsonObject.put("Headshot", ImgIOJsonOutputUtils.encodeImage(user.getHeadshoturl()));
-            System.out.println(2);
             jsonObject.put("Labels", ruld.labelChoosed(user.getId()));
-            System.out.println(3);
             jsonObject.put("SingerLikedNum", rusld.getLikesCountByUserId(user.getId()));
-            System.out.println(4);
             jsonObject.put("SingerPicLatestLiked", ImgIOJsonOutputUtils.encodeImage(rusld.getRecentLikeSingerByUserId(user.getId()).getPicUrl()));
-            System.out.println(5);
             jsonObject.put("SongLikedNum", rusold.getLikesCountByUserId(user.getId()));
-            System.out.println(6);
             jsonObject.put("SongPicLatestLiked", ImgIOJsonOutputUtils.encodeImage(rusold.getRecentLikeSongByUserId(user.getId()).getPicUrl()));
-            System.out.println(7);
             jsonObject.put("PostNum", pd.getPostCountByUserId(user.getId()));
             out.write(jsonObject.toString());
         } catch (SQLException throwables) {

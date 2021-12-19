@@ -4,7 +4,7 @@ public class Singer {
     private int id = 0;
     private String name = "";
     private String intro = "";
-    private String picUrl = "\\usr\\source\\singerpic\\null.jpg";
+    private String picUrl = "/usr/source/singerpic/null.jpg";
 
     public int getId() { return id; }
 
