@@ -34,4 +34,27 @@ public class RUserLabelDao {
         DBconn.closeConn();
         return list;
     }
+
+    public boolean chooseLabels(int userId, int label1, int label2, int label3){
+        DBconn.init();
+        String sql1 = "delete from r_user_label_choosed where user_id =" + userId;
+        DBconn.addUpdDel(sql1);
+        if(label1 > 0){
+            String sql2 = "insert into r_user_label_choosed(user_id, label_id) values(" + userId + ", " + label1 + ")";
+            int i = DBconn.addUpdDel(sql2);
+            if( i <= 0) return false;
+        }
+        if(label2 > 0){
+            String sql3 = "insert into r_user_label_choosed(user_id, label_id) values(" + userId + ", " + label2 + ")";
+            int i = DBconn.addUpdDel(sql3);
+            if( i <= 0) return false;
+        }
+        if(label3 > 0){
+            String sql4 = "insert into r_user_label_choosed(user_id, label_id) values(" + userId + ", " + label3 + ")";
+            int i = DBconn.addUpdDel(sql4);
+            if( i <= 0) return false;
+        }
+        DBconn.closeConn();
+        return true;
+    }
 }

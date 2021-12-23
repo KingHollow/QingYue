@@ -102,4 +102,44 @@
         <servlet-name>chooseSingerLikeServlet</servlet-name>
         <url-pattern>/chooseSingerLike</url-pattern>
     </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>userPostServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.userPostServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>userPostServlet</servlet-name>
+        <url-pattern>/userPost</url-pattern>
+    </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>LabelChooseServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.LabelChooseServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>LabelChooseServlet</servlet-name>
+        <url-pattern>/LabelChoose</url-pattern>
+    </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>aboutSingerServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.aboutSingerServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>aboutSingerServlet</servlet-name>
+        <url-pattern>/aboutSinger</url-pattern>
+    </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>aboutSongServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.aboutSongServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>aboutSongServlet</servlet-name>
+        <url-pattern>/aboutSong</url-pattern>
+    </servlet-mapping>
 </web-app>

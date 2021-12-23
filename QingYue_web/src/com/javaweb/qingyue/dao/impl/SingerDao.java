@@ -50,4 +50,22 @@ public class SingerDao {
         DBconn.closeConn();
         return singer;
     }
+
+    public Singer getRelatedSingerByPostId(int postId){
+        DBconn.init();
+        String sql = "select * from r_post_singer where post_id = " + postId;
+        ResultSet rs = DBconn.selectSql(sql);
+        Singer singer;
+        try {
+            if(rs.next()){
+                singer = getSingerById(rs.getInt("singer_id"));
+                DBconn.closeConn();
+                return singer;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        DBconn.closeConn();
+        return new Singer();
+    }
 }

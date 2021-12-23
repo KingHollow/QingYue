@@ -25,6 +25,24 @@ public class RUserSongLikeDao {
         return 0;
     }
 
+    public int getLikesCountBySongId(int songId){
+        DBconn.init();
+        String sql = "select count(*) as num from r_user_song_like where song_id = " + songId;
+        ResultSet rs = DBconn.selectSql(sql);
+        try {
+            if(rs.next()){
+                int num = rs.getInt("num");
+                DBconn.closeConn();
+                return num;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+        DBconn.closeConn();
+        return 0;
+    }
+
     public Song getRecentLikeSongByUserId(int userId) throws SQLException {
         DBconn.init();
         String sql = "select * from r_user_song_like where user_id = " + userId + " order by time desc limit 1";
@@ -51,7 +69,7 @@ public class RUserSongLikeDao {
             Song song = sd.getSongById(songId);
             songList.add(song);
         }
-        DBconn.closeConn();;
+        DBconn.closeConn();
         return songList;
     }
 
@@ -96,5 +114,32 @@ public class RUserSongLikeDao {
         }
         DBconn.closeConn();
         return false;
+    }
+
+    public boolean haveLikeRelation(int userId, int songId){
+        DBconn.init();
+        String sql = "select * from r_user_singer_like where user_id = " + userId + " and song_id = " + songId;
+        ResultSet rs = DBconn.selectSql(sql);
+        try {
+            if(rs.next()){
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            DBconn.closeConn();
+            return false;
+        }
+        return false;
+    }
+
+    public List<String> getThreeSongLabelsBySongId(int songId) throws SQLException {
+        DBconn.init();
+        String sql = "select label.Name from (r_song_label join label on r_song_label.label_id = label.ID) where r_song_label.song_id = "+ songId + " order by value desc limit 3";
+        List<String> list = new ArrayList<>();
+        ResultSet rs = DBconn.selectSql(sql);
+        while (rs.next()) {
+            list.add(rs.getString("Name"));
+        }
+        return list;
     }
 }

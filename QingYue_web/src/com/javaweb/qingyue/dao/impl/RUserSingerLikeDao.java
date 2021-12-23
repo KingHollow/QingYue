@@ -25,6 +25,24 @@ public class RUserSingerLikeDao {
         return 0;
     }
 
+    public int getLikesCountBySingerId(int singerId) {
+        DBconn.init();
+        String sql = "select count(*) as num from r_user_singer_like where singer_id = " + singerId;
+        ResultSet rs = DBconn.selectSql(sql);
+        try {
+            if(rs.next()){
+                int num =  rs.getInt("num");
+                DBconn.closeConn();
+                return num;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+        DBconn.closeConn();
+        return 0;
+    }
+
     public Singer getRecentLikeSingerByUserId(int userId) throws SQLException {
         DBconn.init();
         String sql = "select * from r_user_singer_like where user_id = " + userId + " order by time desc limit 1";
@@ -51,7 +69,7 @@ public class RUserSingerLikeDao {
             Singer singer = sd.getSingerById(singerId);
             singerList.add(singer);
         }
-        DBconn.closeConn();;
+        DBconn.closeConn();
         return singerList;
     }
 
@@ -95,6 +113,22 @@ public class RUserSingerLikeDao {
             e.printStackTrace();
         }
         DBconn.closeConn();
+        return false;
+    }
+
+    public boolean haveLikeRelation(int userId, int singerId){
+        DBconn.init();
+        String sql = "select * from r_user_singer_like where user_id = " + userId + " and singer_id = " + singerId;
+        ResultSet rs = DBconn.selectSql(sql);
+        try {
+            if(rs.next()){
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            DBconn.closeConn();
+            return false;
+        }
         return false;
     }
 }
