@@ -25,7 +25,7 @@ public class SingerDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        DBconn.closeConn();
+
         return singer;
     }
 
@@ -47,7 +47,7 @@ public class SingerDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        DBconn.closeConn();
+
         return singer;
     }
 
@@ -59,13 +59,13 @@ public class SingerDao {
         try {
             if(rs.next()){
                 singer = getSingerById(rs.getInt("singer_id"));
-                DBconn.closeConn();
+
                 return singer;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        DBconn.closeConn();
+
         return new Singer();
     }
 }

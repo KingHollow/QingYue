@@ -28,7 +28,7 @@ public class SongDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        DBconn.closeConn();
+
         return song;
     }
 
@@ -52,7 +52,7 @@ public class SongDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        DBconn.closeConn();
+
         return song;
     }
 
@@ -64,13 +64,13 @@ public class SongDao {
         try {
             if(rs.next()){
                 song = getSongById(rs.getInt("song_id"));
-                DBconn.closeConn();
+
                 return song;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        DBconn.closeConn();
+
         return new Song();
     }
 }

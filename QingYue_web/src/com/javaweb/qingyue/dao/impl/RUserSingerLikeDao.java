@@ -17,11 +17,10 @@ public class RUserSingerLikeDao {
         String sql = "select count(*) as num from r_user_singer_like where user_id = " + userId;
         ResultSet rs = DBconn.selectSql(sql);
         if(rs.next()){
-            int num =  rs.getInt("num");
-            DBconn.closeConn();
-            return num;
+
+            return rs.getInt("num");
         }
-        DBconn.closeConn();
+
         return 0;
     }
 
@@ -31,15 +30,14 @@ public class RUserSingerLikeDao {
         ResultSet rs = DBconn.selectSql(sql);
         try {
             if(rs.next()){
-                int num =  rs.getInt("num");
-                DBconn.closeConn();
-                return num;
+
+                return rs.getInt("num");
             }
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;
         }
-        DBconn.closeConn();
+
         return 0;
     }
 
@@ -52,9 +50,8 @@ public class RUserSingerLikeDao {
             singerId = rs.getInt("singer_id");
         }
         SingerDao sd = new SingerDao();
-        Singer singer = sd.getSingerById(singerId);
-        DBconn.closeConn();
-        return singer;
+
+        return sd.getSingerById(singerId);
     }
 
     public List<Singer> getSingerLikeList(int userId) throws SQLException {
@@ -69,7 +66,7 @@ public class RUserSingerLikeDao {
             Singer singer = sd.getSingerById(singerId);
             singerList.add(singer);
         }
-        DBconn.closeConn();
+
         return singerList;
     }
 
@@ -79,19 +76,19 @@ public class RUserSingerLikeDao {
         ResultSet rs = DBconn.selectSql(sql1);
         try {
             if(rs.next()){
-                DBconn.closeConn();
+
                 return false;
             }
             String sql2 = "insert into r_user_singer_like(user_id, singer_id, time) values("+userId+", "+singerId+", STR_TO_DATE('"+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) +"','%Y-%m-%d %H:%i:%s'))";
             int i = DBconn.addUpdDel(sql2);
             if(i > 0){
-                DBconn.closeConn();
+
                 return true;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        DBconn.closeConn();
+
         return false;
     }
 
@@ -104,7 +101,7 @@ public class RUserSingerLikeDao {
                 String sql2 = "delete from r_user_singer_like where user_id = " + userId + " and singer_id = " + singerId;
                 int i = DBconn.addUpdDel(sql2);
                 if(i > 0){
-                    DBconn.closeConn();
+
                     return true;
                 }
             }
@@ -112,7 +109,7 @@ public class RUserSingerLikeDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        DBconn.closeConn();
+
         return false;
     }
 
@@ -126,7 +123,7 @@ public class RUserSingerLikeDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            DBconn.closeConn();
+
             return false;
         }
         return false;

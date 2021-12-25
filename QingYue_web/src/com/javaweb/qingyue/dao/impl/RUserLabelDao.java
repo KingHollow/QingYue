@@ -17,8 +17,6 @@ public class RUserLabelDao {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            DBconn.closeConn();
         }
     }
 
@@ -31,7 +29,6 @@ public class RUserLabelDao {
             list.add(rs.getString("Name"));
         }
         while(list.size() < 3) list.add("");
-        DBconn.closeConn();
         return list;
     }
 
@@ -52,9 +49,8 @@ public class RUserLabelDao {
         if(label3 > 0){
             String sql4 = "insert into r_user_label_choosed(user_id, label_id) values(" + userId + ", " + label3 + ")";
             int i = DBconn.addUpdDel(sql4);
-            if( i <= 0) return false;
+            return i > 0;
         }
-        DBconn.closeConn();
         return true;
     }
 }

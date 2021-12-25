@@ -14,8 +14,6 @@ public class LabelDao {
             return "";
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            DBconn.closeConn();
         }
         return "";
     }

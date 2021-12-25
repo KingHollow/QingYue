@@ -9,7 +9,9 @@ import javafx.geometry.Pos;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PostDao {
@@ -20,7 +22,6 @@ public class PostDao {
         if(rs.next()) {
             return rs.getInt("num");
         }
-        DBconn.closeConn();
         return 0;
     }
 
@@ -36,6 +37,13 @@ public class PostDao {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public boolean addLikeToPostById(int postId){
+        DBconn.init();
+        String sql = "update post set likes = likes + 1 where ID = " + postId;
+        int i =DBconn.addUpdDel(sql);
+        return i > 0;
     }
 
     public Post getPostById(int postId) {
@@ -113,13 +121,52 @@ public class PostDao {
                     post.setCardImgUrl("");
                 }
             }
-            DBconn.closeConn();
+
             return post;
         } catch (SQLException e) {
             e.printStackTrace();
-            DBconn.closeConn();
+
             return post;
         }
+    }
+
+    public boolean addPost(int authorId, String content, int type, String relatedName){
+        if (authorId <= 0) return false;
+        DBconn.init();
+        if(type == 1){
+            SongDao sd = new SongDao();
+            Song song = sd.getSongByName(relatedName);
+            if (song.getId() == 0) return false;
+            String sql1 = "insert into post(AuthorID, Content, Likes, Type, RepostedID, Time) values("+authorId+", '"+content+"', 0, 1, 0, STR_TO_DATE('"+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) +"','%Y-%m-%d %H:%i:%s'))";
+            int postId = DBconn.addUpdDelWithId(sql1);
+            if (postId == 0) return false;
+            String sql2 = "insert into r_post_song(post_id, song_id) values("+postId+", "+song.getId()+")";
+            DBconn.addUpdDel(sql2);
+            return true;
+        }else if(type == 2){
+            SingerDao sd = new SingerDao();
+            Singer singer = sd.getSingerByName(relatedName);
+            if(singer.getId() == 0) return false;
+            String sql1 = "insert into post(AuthorID, Content, Likes, Type, RepostedID, Time) values("+authorId+", '"+content+"', 0, 2, 0, STR_TO_DATE('"+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) +"','%Y-%m-%d %H:%i:%s'))";
+            int postId = DBconn.addUpdDelWithId(sql1);
+            if (postId == 0) return false;
+            String sql2 = "insert into r_post_singer(post_id, singer_id) values("+postId+", "+singer.getId()+")";
+            DBconn.addUpdDel(sql2);
+            return true;
+        }else if(type == 0){
+            String sql = "insert into post(AuthorID, Content, Likes, Type, RepostedID, Time) values("+authorId+", '"+content+"', 0, 0, 0, STR_TO_DATE('"+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) +"','%Y-%m-%d %H:%i:%s'))";
+            DBconn.addUpdDel(sql);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean addRepost(int authorId, String content, int repostedId){
+        if (authorId <= 0) return false;
+        DBconn.init();
+        String sql = "insert into post(AuthorID, Content, Likes, Type, RepostedID, Time) values("+authorId+", '"+content+"', 0, 3, " + repostedId + ", STR_TO_DATE('"+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) +"','%Y-%m-%d %H:%i:%s'))";
+        int i = DBconn.addUpdDel(sql);
+        return i > 0;
     }
 
     public List<Post> getLatestPostsByUserId(int userId) throws SQLException {
@@ -133,7 +180,7 @@ public class PostDao {
             Post post = getPostById(rs.getInt("ID"));
             postList.add(post);
         }
-        DBconn.closeConn();
+
         return postList;
     }
 
@@ -148,7 +195,37 @@ public class PostDao {
             Post post = getPostById(rs.getInt("ID"));
             postList.add(post);
         }
-        DBconn.closeConn();
+
+        return postList;
+    }
+
+    public List<Post> getLatestPostsBySearch(String search) throws SQLException {
+        DBconn.init();
+        String sql = "select id from post where content like '%" + search + "%' order by time desc limit 20";
+        ResultSet rs = DBconn.selectSql(sql);
+        List<Post> postList = new ArrayList<>();
+        UserDao ud = new UserDaoImpl();
+        CommentDao cd = new CommentDao();
+        while(rs.next()){
+            Post post = getPostById(rs.getInt("ID"));
+            postList.add(post);
+        }
+
+        return postList;
+    }
+
+    public List<Post> getPostsBeforePostIdBySearch(String search, int postId) throws SQLException {
+        DBconn.init();
+        String sql = "select id from post where content like '%" + search + "%' and id < " + postId + " order by time desc limit 20";
+        ResultSet rs = DBconn.selectSql(sql);
+        List<Post> postList = new ArrayList<>();
+        UserDao ud = new UserDaoImpl();
+        CommentDao cd = new CommentDao();
+        while(rs.next()){
+            Post post = getPostById(rs.getInt("ID"));
+            postList.add(post);
+        }
+
         return postList;
     }
 }

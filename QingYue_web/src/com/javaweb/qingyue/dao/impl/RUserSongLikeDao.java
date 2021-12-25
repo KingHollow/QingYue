@@ -17,11 +17,10 @@ public class RUserSongLikeDao {
         String sql = "select count(*) as num from r_user_song_like where user_id = " + userId;
         ResultSet rs = DBconn.selectSql(sql);
         if(rs.next()){
-            int num = rs.getInt("num");
-            DBconn.closeConn();
-            return num;
+
+            return rs.getInt("num");
         }
-        DBconn.closeConn();
+
         return 0;
     }
 
@@ -31,15 +30,14 @@ public class RUserSongLikeDao {
         ResultSet rs = DBconn.selectSql(sql);
         try {
             if(rs.next()){
-                int num = rs.getInt("num");
-                DBconn.closeConn();
-                return num;
+
+                return rs.getInt("num");
             }
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;
         }
-        DBconn.closeConn();
+
         return 0;
     }
 
@@ -52,9 +50,8 @@ public class RUserSongLikeDao {
             songId = rs.getInt("song_id");
         }
         SongDao sd = new SongDao();
-        Song song = sd.getSongById(songId);
-        DBconn.closeConn();
-        return song;
+
+        return sd.getSongById(songId);
     }
 
     public List<Song> getSongLikeList(int userId) throws SQLException {
@@ -69,7 +66,7 @@ public class RUserSongLikeDao {
             Song song = sd.getSongById(songId);
             songList.add(song);
         }
-        DBconn.closeConn();
+
         return songList;
     }
 
@@ -79,19 +76,19 @@ public class RUserSongLikeDao {
         ResultSet rs = DBconn.selectSql(sql1);
         try {
             if(rs.next()){
-                DBconn.closeConn();
+
                 return false;
             }
             String sql2 = "insert into r_user_song_like(user_id, song_id, time) values("+userId+", "+songId+", STR_TO_DATE('"+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) +"','%Y-%m-%d %H:%i:%s'))";
             int i = DBconn.addUpdDel(sql2);
             if(i > 0){
-                DBconn.closeConn();
+
                 return true;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        DBconn.closeConn();
+
         return false;
     }
 
@@ -104,7 +101,7 @@ public class RUserSongLikeDao {
                 String sql2 = "delete from r_user_song_like where user_id = " + userId + " and song_id = " + songId;
                 int i = DBconn.addUpdDel(sql2);
                 if(i > 0){
-                    DBconn.closeConn();
+
                     return true;
                 }
             }
@@ -112,13 +109,13 @@ public class RUserSongLikeDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        DBconn.closeConn();
+
         return false;
     }
 
     public boolean haveLikeRelation(int userId, int songId){
         DBconn.init();
-        String sql = "select * from r_user_singer_like where user_id = " + userId + " and song_id = " + songId;
+        String sql = "select * from r_user_song_like where user_id = " + userId + " and song_id = " + songId;
         ResultSet rs = DBconn.selectSql(sql);
         try {
             if(rs.next()){
@@ -126,7 +123,7 @@ public class RUserSongLikeDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            DBconn.closeConn();
+
             return false;
         }
         return false;
