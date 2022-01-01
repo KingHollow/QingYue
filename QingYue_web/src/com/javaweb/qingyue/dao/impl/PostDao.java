@@ -4,6 +4,7 @@ import com.javaweb.qingyue.dao.UserDao;
 import com.javaweb.qingyue.entity.Post;
 import com.javaweb.qingyue.entity.Singer;
 import com.javaweb.qingyue.entity.Song;
+import com.javaweb.qingyue.entity.User;
 import com.javaweb.qingyue.util.DBconn;
 import javafx.geometry.Pos;
 
@@ -59,7 +60,7 @@ public class PostDao {
                     post.setId(postId);
                     post.setType(0);
                     post.setPoster(ud.getUserById(rs.getInt("AuthorID")));
-                    post.setTime(rs.getTime("Time").toString());
+                    post.setTime(rs.getTimestamp("Time").toString().substring(0, 19));
                     post.setContent(rs.getString("Content"));
                     post.setLikes(rs.getInt("Likes"));
                     post.setComments(cd.getCommentsCountByPostId(postId));
@@ -74,7 +75,7 @@ public class PostDao {
                     post.setId(postId);
                     post.setType(1);
                     post.setPoster(ud.getUserById(rs.getInt("AuthorID")));
-                    post.setTime(rs.getTime("Time").toString());
+                    post.setTime(rs.getTimestamp("Time").toString().substring(0, 19));
                     post.setContent(rs.getString("Content"));
                     post.setLikes(rs.getInt("Likes"));
                     post.setComments(cd.getCommentsCountByPostId(postId));
@@ -91,7 +92,7 @@ public class PostDao {
                     post.setId(postId);
                     post.setType(2);
                     post.setPoster(ud.getUserById(rs.getInt("AuthorID")));
-                    post.setTime(rs.getTime("Time").toString());
+                    post.setTime(rs.getTimestamp("Time").toString().substring(0, 19));
                     post.setContent(rs.getString("Content"));
                     post.setLikes(rs.getInt("Likes"));
                     post.setComments(cd.getCommentsCountByPostId(postId));
@@ -108,14 +109,15 @@ public class PostDao {
                     post.setId(postId);
                     post.setType(3);
                     post.setPoster(ud.getUserById(rs.getInt("AuthorID")));
-                    post.setTime(rs.getTime("Time").toString());
+                    post.setTime(rs.getTimestamp("Time").toString().substring(0, 19));
                     post.setContent(rs.getString("Content"));
                     post.setLikes(rs.getInt("Likes"));
                     post.setComments(cd.getCommentsCountByPostId(postId));
                     post.setReposts(getRepostsCountByPostId(postId));
-                    post.setRepostedId(rs.getInt("RepostID"));
-                    post.setRepostedName(getPostById(rs.getInt("RepostID")).getPoster().getName());
-                    post.setRepostedContent(getPostById(rs.getInt("RepostID")).getContent());
+                    Post reposted = getPostById(rs.getInt("RepostedID"));
+                    post.setRepostedId(reposted.getId());
+                    post.setRepostedName(reposted.getPoster().getName());
+                    post.setRepostedContent(reposted.getContent());
                     post.setCardTitle("");
                     post.setCardContent("");
                     post.setCardImgUrl("");
@@ -169,13 +171,19 @@ public class PostDao {
         return i > 0;
     }
 
+    public boolean deletePost(int postId){
+        if (postId <= 0) return false;
+        DBconn.init();
+        String sql = "delete from post where ID = " + postId;
+        int i = DBconn.addUpdDel(sql);
+        return i > 0;
+    }
+
     public List<Post> getLatestPostsByUserId(int userId) throws SQLException {
         DBconn.init();
         String sql = "select id from post where authorid = " + userId + " order by time desc limit 20";
         ResultSet rs = DBconn.selectSql(sql);
         List<Post> postList = new ArrayList<>();
-        UserDao ud = new UserDaoImpl();
-        CommentDao cd = new CommentDao();
         while(rs.next()){
             Post post = getPostById(rs.getInt("ID"));
             postList.add(post);
@@ -204,8 +212,6 @@ public class PostDao {
         String sql = "select id from post where content like '%" + search + "%' order by time desc limit 20";
         ResultSet rs = DBconn.selectSql(sql);
         List<Post> postList = new ArrayList<>();
-        UserDao ud = new UserDaoImpl();
-        CommentDao cd = new CommentDao();
         while(rs.next()){
             Post post = getPostById(rs.getInt("ID"));
             postList.add(post);
