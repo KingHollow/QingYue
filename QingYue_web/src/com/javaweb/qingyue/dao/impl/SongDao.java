@@ -28,7 +28,7 @@ public class SongDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        DBconn.closeConn();
+
         return song;
     }
 
@@ -52,7 +52,25 @@ public class SongDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        DBconn.closeConn();
+
         return song;
+    }
+
+    public Song getRelatedSongByPostId(int postId) {
+        DBconn.init();
+        String sql = "select * from r_post_song where post_id = " + postId;
+        ResultSet rs = DBconn.selectSql(sql);
+        Song song;
+        try {
+            if(rs.next()){
+                song = getSongById(rs.getInt("song_id"));
+
+                return song;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return new Song();
     }
 }

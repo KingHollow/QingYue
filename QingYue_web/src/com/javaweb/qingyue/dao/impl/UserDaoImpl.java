@@ -21,7 +21,6 @@ public class UserDaoImpl implements UserDao {
                     flag = true;
                 }
             }
-            DBconn.closeConn();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -42,14 +41,14 @@ public class UserDaoImpl implements UserDao {
         if(i>0){
             flag = true;
         }
-        DBconn.closeConn();
+
         return flag;
 
     }
 
     @Override
     public List<User> getUserAll() {
-        List<User> list = new ArrayList<User>();
+        List<User> list = new ArrayList<>();
         try {
             DBconn.init();
             ResultSet rs = DBconn.selectSql("select * from user");
@@ -65,7 +64,7 @@ public class UserDaoImpl implements UserDao {
                 user.setSignature(rs.getString("Signature"));
                 list.add(user);
             }
-            DBconn.closeConn();
+
             return list;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -88,7 +87,7 @@ public class UserDaoImpl implements UserDao {
                 user.setRegion(rs.getString("Region"));
                 user.setHeadshoturl(rs.getString("Headshoturl"));
                 user.setSignature(rs.getString("Signature"));
-                DBconn.closeConn();
+
                 return user;
             }
         } catch (Exception e) {
@@ -119,7 +118,7 @@ public class UserDaoImpl implements UserDao {
                 user.setRegion(rs.getString("Region") == null ? "" : rs.getString("Region"));
                 user.setHeadshoturl(rs.getString("Headshoturl"));
                 user.setSignature(rs.getString("Signature") == null ? "" : rs.getString("Signature"));
-                DBconn.closeConn();
+
                 return user;
             }
         } catch (Exception e) {
@@ -137,7 +136,7 @@ public class UserDaoImpl implements UserDao {
         if(i>0){
             flag = true;
         }
-        DBconn.closeConn();
+
         return flag;
 
     }
@@ -157,7 +156,7 @@ public class UserDaoImpl implements UserDao {
         if(i>0){
             flag = true;
         }
-        DBconn.closeConn();
+
         return flag;
 
     }

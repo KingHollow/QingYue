@@ -22,7 +22,25 @@ public class DBconn {
         int i = 0;
         try {
             PreparedStatement ps =  conn.prepareStatement(sql);
-            i =  ps.executeUpdate();
+            i = ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("sql数据库增删改异常");
+            e.printStackTrace();
+        }
+
+        return i;
+    }
+
+    public static int addUpdDelWithId(String sql){
+        int i = 0;
+        try {
+            PreparedStatement ps =  conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if(rs.next()){
+                i = rs.getInt(1);
+                return i;
+            }
         } catch (SQLException e) {
             System.out.println("sql数据库增删改异常");
             e.printStackTrace();
