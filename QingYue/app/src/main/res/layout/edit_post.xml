@@ -60,6 +60,7 @@
     </EditText>
 
     <View
+        android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_above="@+id/add_singer"
@@ -133,28 +134,28 @@
     </LinearLayout>
 
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/view_bottom"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:background="#FFFFFF"
-        android:gravity="center">
+        android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/relaterName"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
             android:background="@drawable/bg_label_unclick"
             android:gravity="center"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginVertical="10dp"
+            android:text="llllll"
             android:textColor="@color/gray"
-            android:textSize="20sp"
-            android:visibility="gone">
+            android:textSize="20sp">
 
         </TextView>
 
-    </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

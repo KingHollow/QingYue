@@ -160,6 +160,7 @@ public class activity_EditPost extends Activity implements View.OnClickListener 
         TextView yes = (TextView) vd.findViewById(R.id.yes);
         TextView cancel = (TextView) vd.findViewById(R.id.cancel);
         EditText n_song = (EditText) vd.findViewById(R.id.song);
+        View line = findViewById(R.id.line);
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -191,6 +192,7 @@ public class activity_EditPost extends Activity implements View.OnClickListener 
                         add_song.clearAnimation();
                         add_singer.setVisibility(View.INVISIBLE);
                         add_song.setVisibility(View.INVISIBLE);
+                        line.setVisibility(View.INVISIBLE);
                         relatedName.setVisibility(View.VISIBLE);
                         content = edit_content.getText().toString();
                         type = 1;

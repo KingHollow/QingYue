@@ -301,4 +301,24 @@ public class activity_aboutPost extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    public void aboutSong(View view) {
+        songname = view.findViewById(R.id.song_name);
+        Intent intent = new Intent(getApplicationContext(), activity_aboutSong.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("song", songname.getText().toString());
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void aboutSinger(View view) {
+        singername = view.findViewById(R.id.name);
+        Intent intent = new Intent(getApplicationContext(), activity_aboutSinger.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("singer", singername.getText().toString());
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void commentPost(View view) {
+    }
 }
