@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/tv_qingyue"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ACDDBE"
+        android:gravity="center"
+        android:text="用户详情"
+        android:textSize="25sp">
+
+    </TextView>
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/round"
+        android:scaleType="fitXY"
+        android:src="@drawable/previous_page">
+
+    </ImageButton>
+
+    <RelativeLayout
+        android:id="@+id/user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_qingyue"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="#FFFFFF">
+
+
+        <ImageView
+            android:id="@+id/head_picture"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/headpic">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/Nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/head_picture"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="考研上岸"
+            android:textColor="#ACDDBE"
+            android:textSize="25sp">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/sex"
+            android:layout_width="30dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/Nickname"
+            android:src="@drawable/man">
+
+        </ImageView>
+
+
+        <TextView
+            android:id="@+id/region"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Nickname"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_toRightOf="@+id/head_picture"
+            android:text="shanghai"
+            android:textColor="@color/black"
+            android:textSize="20sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/signature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Nickname"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="10dp"
+            android:text="signature"
+            android:textColor="@color/black"
+            android:textSize="20sp">
+
+        </TextView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/user_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user"
+        android:layout_marginTop="10dp"
+        android:background="#FFFFFF">
+
+        <TextView
+            android:id="@+id/label_1"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/bg_label_unclick"
+            android:textSize="15sp"
+            android:textColor="@color/purple_200"
+            android:gravity="center">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/label_2"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/label_1"
+            android:background="@drawable/bg_label_unclick"
+            android:textSize="15sp"
+            android:textColor="@color/purple_200"
+            android:gravity="center">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/label_3"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/label_2"
+            android:background="@drawable/bg_label_unclick"
+            android:textSize="15sp"
+            android:textColor="@color/purple_200"
+            android:gravity="center">
+
+        </TextView>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scview_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_view"
+        android:background="#FFFFFF">
+
+        <LinearLayout
+            android:id="@+id/user_view1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            android:background="#FFFFFF">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="#FFFFFF"
+                android:text="TA的喜欢"
+                android:textColor="#222121"
+                android:textSize="25sp"
+                android:textStyle="bold">
+
+            </TextView>
+
+
+            <RelativeLayout
+                android:id="@+id/rel_song"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/cover_song"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/song"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="歌曲"
+                    android:textColor="#ACDDBE"
+                    android:textSize="25sp">
+
+                </TextView>
+
+
+                <ImageView
+                    android:id="@+id/btn_enter"
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#FFFFFF"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/more">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/song_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/song"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/gray">
+
+                </TextView>
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rel_singer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/cover_singer"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/singer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="歌手"
+                    android:textColor="#ACDDBE"
+                    android:textSize="25sp">
+
+                </TextView>
+
+
+                <ImageView
+                    android:id="@+id/btn_enter_singer"
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#FFFFFF"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/more">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/singer_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/singer"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/gray">
+
+                </TextView>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rel_post"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+
+                <TextView
+                    android:id="@+id/post"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="TA的帖子"
+                    android:textColor="#ACDDBE"
+                    android:textSize="25sp">
+
+                </TextView>
+
+
+                <ImageView
+                    android:id="@+id/btn_enter_post"
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#FFFFFF"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/more">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/post_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/post"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/gray">
+
+                </TextView>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/add_friend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scview_user"
+        android:onClick="addFriend"
+        android:clickable="true"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/add"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/add_friend">
+
+        </ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="添加好友"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_toRightOf="@+id/add"
+            android:textColor="#8a8a8a">
+
+        </TextView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/delete_friend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scview_user"
+        android:onClick="addFriend"
+        android:clickable="true"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/delete_friend">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@+id/delete"
+            android:gravity="center"
+            android:text="删除好友"
+            android:textColor="#8a8a8a"
+            android:textSize="20sp">
+
+        </TextView>
+    </RelativeLayout>
+</RelativeLayout>

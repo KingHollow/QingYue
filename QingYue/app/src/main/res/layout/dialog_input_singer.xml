@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="60dp"
+    android:paddingRight="60dp"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:padding="20dp"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textColor="@color/teal_200"
+        android:text="请输入歌手" />
+
+    <EditText
+        android:id="@+id/singer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="16sp"
+        android:textColor="#CDCDCD"
+        android:textColorHint="#CDCDCD"
+        android:inputType="text"
+        android:layout_below="@id/title"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:enabled="true">
+    </EditText>
+
+    <LinearLayout
+        android:id="@+id/view_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:layout_below="@id/singer">
+
+    <TextView
+        android:id="@+id/yes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="20dp"
+        android:paddingTop="20dp"
+        android:textColor="@color/teal_200"
+        android:layout_weight="1"
+        android:text="添加" />
+    <TextView
+        android:layout_toRightOf="@id/yes"
+        android:id="@+id/cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:textColor="@color/teal_200"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:text="取消" />
+    </LinearLayout>
+</RelativeLayout>

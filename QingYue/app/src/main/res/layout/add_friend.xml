@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/tv_qingyue"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ACDDBE"
+        android:gravity="center"
+        android:text="申请添加好友"
+        android:textSize="25sp">
+
+
+    </TextView>
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/round"
+        android:scaleType="fitXY"
+        android:src="@drawable/previous_page">
+
+    </ImageButton>
+
+    <TextView
+        android:id="@+id/tv_add_friend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_qingyue"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:text="发送添加朋友申请"
+        android:textSize="20sp"
+        android:background="#FFFFFF">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/edit_add_friend"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/tv_add_friend"
+        android:background="@drawable/bg_like_songorsinger"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+    </EditText>
+
+    <TextView
+        android:id="@+id/tv_add_remark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_add_friend"
+        android:text="设置备注"
+        android:textSize="20sp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:background="#FFFFFF">
+
+    </TextView>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/tv_add_remark"
+        android:background="@drawable/bg_like_songorsinger"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+    </EditText>
+</RelativeLayout>

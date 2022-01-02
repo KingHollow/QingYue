@@ -73,4 +73,17 @@ public class SongDao {
 
         return new Song();
     }
+
+    public boolean existSong(String name){
+        DBconn.init();
+        String sql = "select * from singer where name = '" + name + "'";
+        ResultSet rs = DBconn.selectSql(sql);
+        try {
+            if (rs.next()) return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
 }

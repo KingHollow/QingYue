@@ -22,7 +22,7 @@ public class MineInitServlet extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException {
 
         try (PrintWriter out = response.getWriter()) {
 
@@ -43,15 +43,30 @@ public class MineInitServlet extends HttpServlet {
             jsonObject.put("Region", user.getRegion());
             jsonObject.put("Signature", user.getSignature());
             System.out.println(user.getHeadshoturl());
-            jsonObject.put("Headshot", ImgIOJsonOutputUtils.encodeImage(user.getHeadshoturl()));
+            try {
+                jsonObject.put("Headshot", ImgIOJsonOutputUtils.encodeImage(user.getHeadshoturl()));
+            } catch (IOException e) {
+                e.printStackTrace();
+                jsonObject.put("Headshot", "");
+            }
             jsonObject.put("Labels", ruld.labelChoosed(user.getId()));
             jsonObject.put("SingerLikedNum", rusld.getLikesCountByUserId(user.getId()));
-            jsonObject.put("SingerPicLatestLiked", ImgIOJsonOutputUtils.encodeImage(rusld.getRecentLikeSingerByUserId(user.getId()).getPicUrl()));
+            try {
+                jsonObject.put("SingerPicLatestLiked", ImgIOJsonOutputUtils.encodeImage(rusld.getRecentLikeSingerByUserId(user.getId()).getPicUrl()));
+            } catch (IOException e) {
+                e.printStackTrace();
+                jsonObject.put("SingerPicLatestLiked", "");
+            }
             jsonObject.put("SongLikedNum", rusold.getLikesCountByUserId(user.getId()));
-            jsonObject.put("SongPicLatestLiked", ImgIOJsonOutputUtils.encodeImage(rusold.getRecentLikeSongByUserId(user.getId()).getPicUrl()));
+            try {
+                jsonObject.put("SongPicLatestLiked", ImgIOJsonOutputUtils.encodeImage(rusold.getRecentLikeSongByUserId(user.getId()).getPicUrl()));
+            } catch (IOException e) {
+                e.printStackTrace();
+                jsonObject.put("SongPicLatestLiked", "");
+            }
             jsonObject.put("PostNum", pd.getPostCountByUserId(user.getId()));
             out.write(jsonObject.toString());
-        } catch (SQLException throwables) {
+        } catch (SQLException | IOException throwables) {
             throwables.printStackTrace();
         }
     }
