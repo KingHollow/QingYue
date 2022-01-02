@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/tv_qingyue"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ACDDBE"
+        android:gravity="center"
+        android:text="标签选择"
+        android:textSize="25sp">
+
+    </TextView>
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/round"
+        android:scaleType="fitXY"
+        android:src="@drawable/previous_page">
+
+    </ImageButton>
+
+    <LinearLayout
+        android:id="@+id/labels_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_qingyue"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <CheckBox
+            android:id="@+id/label_1"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="流行"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/purple_500"
+            android:gravity="center"
+            android:hint="1">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/label_2"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="摇滚"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/gray"
+            android:gravity="center"
+            android:hint="2">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/label_3"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="民谣"
+            android:textSize="20sp"
+            android:textColor="@color/steel"
+            android:gravity="center"
+            android:hint="3">
+
+        </CheckBox>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/labels_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/labels_1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <CheckBox
+            android:id="@+id/label_4"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="电子"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/aqua"
+            android:gravity="center"
+            android:hint="4">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/label_5"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="舞曲"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/teal_200"
+            android:gravity="center"
+            android:hint="5">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/label_6"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="说唱"
+            android:textSize="20sp"
+            android:textColor="@color/purple_200"
+            android:gravity="center"
+            android:hint="6">
+
+        </CheckBox>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/labels_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/labels_2"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <CheckBox
+            android:id="@+id/label_7"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="轻音乐"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/pale"
+            android:gravity="center"
+            android:hint="7">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/label_8"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="爵士"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/gray"
+            android:gravity="center"
+            android:hint="8">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/label_9"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="乡村"
+            android:textSize="20sp"
+            android:textColor="@color/sky"
+            android:gravity="center"
+            android:hint="9">
+
+        </CheckBox>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/labels_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/labels_3"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
+
+        <CheckBox
+            android:id="@+id/label_10"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/RB"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/steel"
+            android:gravity="center"
+            android:hint="10">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/label_11"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="古典"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/teal_700"
+            android:gravity="center"
+            android:hint="11">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/label_12"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="民族"
+            android:textSize="20sp"
+            android:textColor="@color/pale"
+            android:gravity="center"
+            android:hint="12">
+
+        </CheckBox>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/labels_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/labels_4"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
+
+        <CheckBox
+            android:id="@+id/label_13"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="英伦"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/purple_500"
+            android:gravity="center"
+            android:hint="13">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/label_14"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="金属"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/teal_700"
+            android:gravity="center"
+            android:hint="14">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/label_15"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="蓝调"
+            android:textSize="20sp"
+            android:textColor="@color/purple_200"
+            android:gravity="center"
+            android:hint="15">
+
+        </CheckBox>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/labels_6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/labels_5"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
+
+        <CheckBox
+            android:id="@+id/label_16"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="雷鬼"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/sky"
+            android:gravity="center"
+            android:hint="16">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/label_17"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="世界音乐"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/steel"
+            android:gravity="center"
+            android:hint="17">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/label_18"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="拉丁"
+            android:textSize="20sp"
+            android:textColor="@color/purple_700"
+            android:hint="18">
+
+        </CheckBox>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/labels_7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/labels_6"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
+
+        <CheckBox
+            android:id="@+id/label_19"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="古风"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/steel"
+            android:gravity="center"
+            android:hint="19">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/label_20"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:text="New Age"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:textColor="@color/pale"
+            android:gravity="center"
+            android:hint="20">
+
+        </CheckBox>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_modify"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/labels_7"
+        android:layout_gravity="center"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/bg_login"
+        android:clickable="true"
+        android:gravity="center"
+        android:onClick="modify"
+        android:text="修改个人标签"
+        android:textColor="@color/white"
+        android:textSize="25sp">
+
+    </Button>
+
+</RelativeLayout>

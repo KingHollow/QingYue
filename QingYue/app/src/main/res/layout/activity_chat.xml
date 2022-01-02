@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/tv_qingyue"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ACDDBE"
+        android:gravity="center"
+        android:text="青乐"
+        android:textColor="@color/white"
+        android:textSize="25sp">
+
+    </TextView>
+
+    <ImageButton
+        android:id="@+id/btn_add"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/round"
+        android:scaleType="fitXY"
+        android:src="@drawable/add1">
+
+    </ImageButton>
+
+    <View
+        android:id="@+id/view_1"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/tv_qingyue"
+        android:background="#CDCDCD">
+
+    </View>
+
+    <EditText
+        android:id="@+id/edit_search"
+        android:layout_width="350dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/tv_qingyue"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/search"
+        android:drawablePadding="5dp"
+        android:gravity="center"
+        android:hint="搜索">
+
+    </EditText>
+
+    <ImageButton
+        android:id="@+id/btn_search"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/tv_qingyue"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/edit_search"
+        android:background="#CDCDCD"
+        android:scaleType="fitXY"
+        android:src="@drawable/searchpic">
+
+    </ImageButton>
+
+    <ListView
+        android:id="@+id/list_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom"
+        android:layout_below="@+id/view_1"
+        android:layout_marginBottom="5dp"
+        android:background="#FFFFFF"
+        android:scrollbars="vertical">
+
+    </ListView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#CDCDCD"
+        android:layout_above="@+id/bottom">
+
+    </View>
+
+    <LinearLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF">
+
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <ImageButton
+                android:id="@+id/btn_homepage"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="#FFFFFF"
+                android:scaleType="fitXY"
+                android:src="@drawable/homepage_grey"
+                android:onClick="homepage"
+                android:clickable="true"
+                android:focusable="true">
+
+            </ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_below="@+id/btn_homepage"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="首页">
+
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <ImageButton
+                android:id="@+id/btn_chat"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/btn_homepage"
+                android:background="#FFFFFF"
+                android:scaleType="fitXY"
+                android:src="@drawable/chat_green">
+
+            </ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_below="@+id/btn_chat"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/btn_homepage"
+                android:gravity="center"
+                android:text="聊天"
+                android:textColor="#ACDDBE">
+
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_recommend"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/btn_chat"
+                android:background="#FFFFFF"
+                android:scaleType="fitXY"
+                android:src="@drawable/recommend_grey"
+                android:onClick="recommend"
+                android:clickable="true"
+                android:focusable="true">
+
+            </ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_below="@+id/btn_recommend"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/btn_chat"
+                android:gravity="center"
+                android:text="推荐">
+
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <ImageButton
+                android:id="@+id/btn_mine"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/btn_recommend"
+                android:background="#FFFFFF"
+                android:scaleType="fitXY"
+                android:src="@drawable/mine_grey"
+                android:onClick="mine"
+                android:clickable="true"
+                android:focusable="true">
+
+            </ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_below="@+id/btn_mine"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/btn_recommend"
+                android:gravity="center"
+                android:text="我的">
+
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

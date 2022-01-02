@@ -252,4 +252,24 @@
         <servlet-name>friendRecommendServlet</servlet-name>
         <url-pattern>/friendRecommend</url-pattern>
     </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>containNameServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.containNameServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>containNameServlet</servlet-name>
+        <url-pattern>/containName</url-pattern>
+    </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>chatListServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.chatListServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>chatListServlet</servlet-name>
+        <url-pattern>/chatList</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -162,4 +162,94 @@
         <servlet-name>postListServlet</servlet-name>
         <url-pattern>/postList</url-pattern>
     </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>postLikeServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.postLikeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>postLikeServlet</servlet-name>
+        <url-pattern>/postLike</url-pattern>
+    </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>postCommentServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.postCommentServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>postCommentServlet</servlet-name>
+        <url-pattern>/postComment</url-pattern>
+    </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>repostServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.repostServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>repostServlet</servlet-name>
+        <url-pattern>/repost</url-pattern>
+    </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>deletePostServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.deletePostServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>deletePostServlet</servlet-name>
+        <url-pattern>/deletePost</url-pattern>
+    </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>commentListServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.commentListServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>commentListServlet</servlet-name>
+        <url-pattern>/commentList</url-pattern>
+    </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>aboutOPostServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.aboutOPostServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>aboutOPostServlet</servlet-name>
+        <url-pattern>/aboutOPost</url-pattern>
+    </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>singerRecommendServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.singerRecommendServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>singerRecommendServlet</servlet-name>
+        <url-pattern>/singerRecommend</url-pattern>
+    </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>songRecommendServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.songRecommendServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>songRecommendServlet</servlet-name>
+        <url-pattern>/songRecommend</url-pattern>
+    </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>friendRecommendServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.friendRecommendServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>friendRecommendServlet</servlet-name>
+        <url-pattern>/friendRecommend</url-pattern>
+    </servlet-mapping>
 </web-app>

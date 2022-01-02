@@ -28,7 +28,7 @@ public class PostDao {
 
     public int getRepostsCountByPostId(int postId) {
         DBconn.init();
-        String sql = "select count(*) as num from post where repostid = " + postId;
+        String sql = "select count(*) as num from post where repostedid = " + postId;
         ResultSet rs = DBconn.selectSql(sql);
         try {
             if(rs.next()) {

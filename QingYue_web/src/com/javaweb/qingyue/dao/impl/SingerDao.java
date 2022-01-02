@@ -68,4 +68,17 @@ public class SingerDao {
 
         return new Singer();
     }
+
+    public boolean existSinger(String name){
+        DBconn.init();
+        String sql = "select * from singer where name = '" + name + "'";
+        ResultSet rs = DBconn.selectSql(sql);
+        try {
+            if (rs.next()) return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
 }

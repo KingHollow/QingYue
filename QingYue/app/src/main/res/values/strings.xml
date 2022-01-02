@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">QingYue</string>
+    <string name="app_name">qingyue</string>
+    <string name="register"><u>还没有账户？请点此注册</u></string>
+    <string name="RB">R<![CDATA[&]]>B/Soul</string>
 </resources>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:focusableInTouchMode="true">
+
+    <ImageView
+        android:id="@+id/logo1"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/qingyuelogo">
+    </ImageView>
+
+    <EditText
+        android:id="@+id/et_Rgname"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="16sp"
+        android:textColor="#808080"
+        android:textColorHint="#CDCDCD"
+        android:hint="用户名"
+        android:inputType="text"
+        android:layout_below="@id/logo1"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:enabled="true"
+        >
+    </EditText>
+
+    <EditText
+        android:id="@+id/et_Repassword"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="16sp"
+        android:textColor="#808080"
+        android:textColorHint="#CDCDCD"
+        android:inputType="textPassword"
+        android:hint="密码"
+        android:layout_below="@id/et_Rgname"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:enabled="true">
+    </EditText>
+
+    <EditText
+        android:id="@+id/et_Repassword1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="16sp"
+        android:textColor="#808080"
+        android:textColorHint="#CDCDCD"
+        android:inputType="textPassword"
+        android:hint="重复密码"
+        android:layout_below="@id/et_Repassword"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:enabled="true">
+    </EditText>
+
+    <Button
+        android:id="@+id/btn_register1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/et_Repassword1"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/bg_login"
+        android:text="注  册"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:onClick="register">
+    </Button>
+
+</RelativeLayout>
