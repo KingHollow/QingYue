@@ -270,7 +270,7 @@ public class activity_forums_square extends Activity implements View.OnClickList
         bundle1.putString("postid", o_id.getText().toString());
 
         intent.putExtras(bundle1);//附带上额外的数据
-        startActivityForResult(intent,2);
+        startActivity(intent);
     }
 
     public void likePost(View view) {

@@ -41,29 +41,47 @@
             </TextView>
 
             <TextView
-                android:id="@+id/conversation"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/similarity"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="40dp"
-                android:layout_toRightOf="@+id/head_picture"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="你有看最新的一期。。。。。。。。。。。。。。。。。嘛">
+                android:layout_toRightOf="@+id/username"
+                android:gravity="center"
+                android:text="相似程度：99%"
+                android:textColor="#ACDDBE"
+                android:textSize="18sp">
 
             </TextView>
 
             <TextView
-                android:id="@+id/time"
-                android:layout_width="wrap_content"
+                android:id="@+id/singer_like"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:gravity="center"
-                android:text="16:15">
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="45dp"
+                android:layout_toRightOf="@+id/head_picture"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="喜好歌手：周杰伦"
+                android:textColor="@color/gray"
+                android:textSize="13sp">
 
             </TextView>
+            <TextView
+                android:id="@+id/labels"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="45dp"
+                android:layout_toRightOf="@+id/singer_like"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="标签：流行、格局、古典"
+                android:textColor="@color/gray"
+                android:textSize="13sp">
+
+            </TextView>
+
 
             <View
                 android:layout_width="match_parent"

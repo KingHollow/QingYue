@@ -14,7 +14,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:background="#FFFFFF"
             android:scaleType="fitXY"
             android:src="@drawable/headpic">
@@ -52,6 +52,14 @@
 
         </TextView>
     </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/info"
+        android:layout_marginTop="20dp"
+        android:background="#CDCDCD">
+    </View>
 
 
     <ImageButton

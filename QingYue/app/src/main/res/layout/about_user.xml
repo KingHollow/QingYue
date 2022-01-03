@@ -115,7 +115,7 @@
             android:layout_marginLeft="30dp"
             android:background="@drawable/bg_label_unclick"
             android:textSize="15sp"
-            android:textColor="@color/purple_200"
+            android:textColor="@color/gray"
             android:gravity="center">
 
         </TextView>
@@ -128,7 +128,7 @@
             android:layout_toRightOf="@+id/label_1"
             android:background="@drawable/bg_label_unclick"
             android:textSize="15sp"
-            android:textColor="@color/purple_200"
+            android:textColor="@color/gray"
             android:gravity="center">
 
         </TextView>
@@ -141,7 +141,7 @@
             android:layout_toRightOf="@+id/label_2"
             android:background="@drawable/bg_label_unclick"
             android:textSize="15sp"
-            android:textColor="@color/purple_200"
+            android:textColor="@color/gray"
             android:gravity="center">
 
         </TextView>
@@ -169,7 +169,7 @@
                 android:layout_marginLeft="20dp"
                 android:background="#FFFFFF"
                 android:text="TA的喜欢"
-                android:textColor="#222121"
+                android:textColor="#ACDDBE"
                 android:textSize="25sp"
                 android:textStyle="bold">
 

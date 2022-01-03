@@ -10,16 +10,20 @@
         <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/activity_friends_list.xml" value="0.11510416666666666" />
         <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/activity_mine.xml" value="0.264" />
         <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/activity_mine_post.xml" value="0.2" />
-        <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/activity_recommend_friend.xml" value="0.513840830449827" />
+        <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/activity_recommend_friend.xml" value="0.4" />
         <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/activity_recommend_singer.xml" value="0.11510416666666666" />
         <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/activity_recommend_song.xml" value="0.264" />
         <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/add_friend.xml" value="0.2" />
         <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/dialog_comment.xml" value="0.264" />
         <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/edit_post.xml" value="0.2" />
         <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/list_chat.xml" value="0.4" />
+        <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/list_friend_rcmd.xml" value="0.4" />
+        <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/list_like_singer.xml" value="0.10677083333333333" />
         <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/list_like_song.xml" value="0.1046875" />
         <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/list_post.xml" value="0.264" />
         <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/list_post_comment.xml" value="0.10885416666666667" />
+        <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/list_recommend_song.xml" value="0.22708333333333333" />
+        <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/user_like_singer.xml" value="0.1046875" />
         <entry key="..\:/QingYue/QingYue/app/src/main/res/layout/user_post.xml" value="0.1" />
       </map>
     </option>
