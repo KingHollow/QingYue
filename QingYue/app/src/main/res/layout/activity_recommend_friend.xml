@@ -81,7 +81,9 @@
         android:layout_below="@id/bottons"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="220dp"
-        android:src="@drawable/headpic">
+        android:src="@drawable/headpic"
+        android:clickable="true"
+        android:focusable="true">
 
     </ImageView>
 
@@ -98,7 +100,8 @@
             android:id="@+id/user_name_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="azzzzzz">
+            android:text="azzzzzz"
+            android:textColor="#ACDDBE">
 
         </TextView>
 
@@ -106,7 +109,8 @@
             android:id="@+id/user_chengdu_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="相似程度：91%">
+            android:text="相似程度：91%"
+            android:textColor="#ACDDBE">
 
         </TextView>
 
@@ -114,7 +118,8 @@
             android:id="@+id/user_labels_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="标签：欧美、流行">
+            android:text="标签：欧美、流行"
+            android:textColor="#ACDDBE">
 
         </TextView>
 
@@ -122,7 +127,8 @@
             android:id="@+id/like_singer_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="喜好歌手：周杰伦">
+            android:text="喜好歌手：周杰伦"
+            android:textColor="#ACDDBE">
 
         </TextView>
 
@@ -154,7 +160,10 @@
         android:layout_marginLeft="50dp"
         android:layout_marginTop="140dp"
         android:layout_toRightOf="@+id/head_picture_mine"
-        android:src="@drawable/headpic">
+        android:src="@drawable/headpic"
+        android:textColor="#ACDDBE"
+        android:clickable="true"
+        android:focusable="true">
 
     </ImageView>
 
@@ -162,15 +171,16 @@
         android:id="@+id/user_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginLeft="240dp"
-        android:layout_marginTop="120dp">
+        android:layout_marginTop="120dp"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/user_name_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="azzzzzz">
+            android:text="azzzzzz"
+            android:textColor="#ACDDBE">
 
         </TextView>
 
@@ -178,7 +188,8 @@
             android:id="@+id/user_chengdu_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="相似程度：91%">
+            android:text="相似程度：91%"
+            android:textColor="#ACDDBE">
 
         </TextView>
 
@@ -186,7 +197,8 @@
             android:id="@+id/user_labels_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="标签：欧美、流行">
+            android:text="标签：欧美、流行"
+            android:textColor="#ACDDBE">
 
         </TextView>
 
@@ -194,7 +206,8 @@
             android:id="@+id/like_singer_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="喜好歌手：周杰伦">
+            android:text="喜好歌手：周杰伦"
+            android:textColor="#ACDDBE">
 
         </TextView>
 
@@ -226,7 +239,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="350dp"
         android:layout_toRightOf="@+id/head_picture_mine"
-        android:src="@drawable/headpic">
+        android:src="@drawable/headpic"
+        android:clickable="true"
+        android:focusable="true">
 
     </ImageView>
 
@@ -242,7 +257,8 @@
             android:id="@+id/user_name_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="azzzzzz">
+            android:text="azzzzzz"
+            android:textColor="#ACDDBE">
 
         </TextView>
 
@@ -250,7 +266,8 @@
             android:id="@+id/user_chengdu_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="相似程度：91%">
+            android:text="相似程度：91%"
+            android:textColor="#ACDDBE">
 
         </TextView>
 
@@ -258,7 +275,8 @@
             android:id="@+id/user_labels_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="标签：欧美、流行">
+            android:text="标签：欧美、流行"
+            android:textColor="#ACDDBE">
 
         </TextView>
 
@@ -266,13 +284,15 @@
             android:id="@+id/like_singer_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="喜好歌手：周杰伦">
+            android:text="喜好歌手：周杰伦"
+            android:textColor="#ACDDBE">
 
         </TextView>
 
     </LinearLayout>
 
     <ImageButton
+        android:id="@+id/fresh"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
@@ -280,7 +300,10 @@
         android:layout_marginBottom="10dp"
         android:background="#FFFFFF"
         android:scaleType="fitXY"
-        android:src="@drawable/refresh">
+        android:src="@drawable/refresh"
+        android:onClick="fresh"
+        android:clickable="true"
+        android:focusable="true">
 
     </ImageButton>
 

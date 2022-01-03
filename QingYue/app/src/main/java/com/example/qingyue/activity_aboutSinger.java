@@ -168,7 +168,7 @@ public class activity_aboutSinger extends Activity implements View.OnClickListen
                         e.printStackTrace();
                     }
 
-                    String likeJson= PostUtil.doPost("chooseSongLike",data);
+                    String likeJson= PostUtil.doPost("chooseSingerLike",data);
 
                     try {
 

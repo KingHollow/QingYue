@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserDaoImpl implements UserDao {
     @Override
@@ -101,6 +102,33 @@ public class UserDaoImpl implements UserDao {
         UserDao ud = new UserDaoImpl();
         User user = ud.getUserByUsername(username);
         return update(user.getId(), user.getName(), user.getPassword(), nickname, sex, region, user.getHeadshoturl(), signature);
+    }
+
+    @Override
+    public List<User> getUserByIds(List<Integer> ids) {
+        if (ids == null || ids.isEmpty()) return new ArrayList<>();
+        List<User> result = new ArrayList<>();
+        DBconn.init();
+        String sql = "select * from user where id in (" + ids.stream().map(String::valueOf).collect(Collectors.joining(",")) + ")";
+        ResultSet rs = DBconn.selectSql(sql);
+        try {
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("ID"));
+                user.setName(rs.getString("Name"));
+                user.setPassword(rs.getString("Password"));
+                user.setNickname(rs.getString("Nickname"));
+                user.setSex(rs.getString("Sex"));
+                user.setRegion(rs.getString("Region"));
+                user.setHeadshoturl(rs.getString("Headshoturl"));
+                user.setSignature(rs.getString("Signature"));
+                result.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return result;
+        }
+        return result;
     }
 
     public User getUserByUsername(String username) {

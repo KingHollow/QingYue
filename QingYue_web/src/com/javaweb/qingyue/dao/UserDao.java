@@ -15,4 +15,5 @@ public interface UserDao {
     public User getUserByUsername(String username);
     public User getUserById(int id);
     public boolean infoModify(String username, String nickname, String sex, String region, String signature);
+    public List<User> getUserByIds(List<Integer> ids);
 }
