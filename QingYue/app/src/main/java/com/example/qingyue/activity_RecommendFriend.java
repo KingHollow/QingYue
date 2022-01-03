@@ -8,6 +8,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.qingyue.entity.User;
+import com.example.qingyue.utils.PostUtil;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 public class activity_RecommendFriend extends Activity {
 
     @Override
@@ -33,6 +42,26 @@ public class activity_RecommendFriend extends Activity {
                 activity_RecommendFriend.this.finish();
             }
         });
+
+        init();
+    }
+
+    public void init() {
+        User n_user = (User) getApplication();
+        String username = n_user.getUserName();
+        String data = null;
+        try {
+            data = "?username" + URLEncoder.encode(username, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        String friendJson= PostUtil.doPost("postComment",data);
+        try {
+            JSONArray jsonArray = new JSONArray(friendJson);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     //homepage

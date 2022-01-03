@@ -161,7 +161,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/view_bottom"
         android:layout_below="@+id/user_view">
 
         <LinearLayout
@@ -357,6 +356,7 @@
 
 
     <View
+        android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:background="#CDCDCD"
