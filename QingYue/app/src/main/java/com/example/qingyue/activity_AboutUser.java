@@ -175,7 +175,7 @@ public class activity_AboutUser extends Activity implements View.OnClickListener
             String data2 = "";
             try {
                 data2 = "?username1=" + URLEncoder.encode(n_user.getUserName(), "UTF-8") +
-                        "?username2=" + URLEncoder.encode(n_username, "UTF-8");
+                        "&username2=" + URLEncoder.encode(n_username, "UTF-8");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
@@ -190,11 +190,23 @@ public class activity_AboutUser extends Activity implements View.OnClickListener
 
                 String result = null;
                 result = jsonObject2.getString("Result");
-                Looper.prepare();
+
                 if (result.equals("success")) {
                     delete.setVisibility(View.VISIBLE);
+                    delete.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            deleteFriend();
+                        }
+                    });
                 } else {
                     add.setVisibility(View.VISIBLE);
+                    add.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            addFriend();
+                        }
+                    });
                 }
 
             } catch (JSONException e) {
@@ -229,7 +241,11 @@ public class activity_AboutUser extends Activity implements View.OnClickListener
         }
     }
 
-    private void addFriend(){}
+    private void addFriend(){
+        Toast.makeText(getApplicationContext(), "已发送好友申请", Toast.LENGTH_LONG).show();
+    }
 
-    private void deleteFriend(){}
+    private void deleteFriend(){
+
+    }
 }

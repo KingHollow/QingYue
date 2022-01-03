@@ -386,7 +386,7 @@ public class activity_aboutPost extends Activity {
 
         //判断一下，帖子详情展示的是不是当前用户的帖子，如果是，不跳转
 
-        if (n_user.getUserName().equals(username)) {
+        if (!n_user.getUserName().equals(username)) {
             Intent intent = new Intent(getApplicationContext(), activity_AboutUser.class);
             Bundle bundle = new Bundle();
             bundle.putString("username", username);

@@ -10,6 +10,7 @@ import com.javaweb.qingyue.util.ImgIOJsonOutputUtils;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class friendRecommendServlet extends HttpServlet {
@@ -47,18 +49,20 @@ public class friendRecommendServlet extends HttpServlet {
             RUserLabelDao ruld = new RUserLabelDao();
             RUserSingerLikeDao rusld = new RUserSingerLikeDao();
 
-            friendRcmd.forEach((i, s) -> {
+            List<Integer> friendIds = new ArrayList<>(friendRcmd.keySet());
+            List<User> friends = ud.getUserByIds(friendIds);
+
+            friends.forEach(friend -> {
                 JSONObject item = new JSONObject();
-                item.put("similarity", s);
-                User friend = ud.getUserById(i);
+                item.put("similarity", friendRcmd.get(friend.getId()));
                 try {
-                    item.put("labels", ruld.labelChoosed(i));
+                    item.put("labels", ruld.labelChoosed(friend.getId()));
                 } catch (SQLException e) {
                     e.printStackTrace();
                     item.put("labels", new ArrayList<>());
                 }
                 try {
-                    item.put("singerLike", rusld.getRecentLikeSingerByUserId(i).getName());
+                    item.put("singerLike", rusld.getRecentLikeSingerByUserId(friend.getId()).getName());
                 } catch (SQLException e) {
                     e.printStackTrace();
                     item.put("singerLike", "");

@@ -31,7 +31,7 @@ public class UserSongAdapter extends BaseAdapter {
     }
     @Override
     public Object getItem(int position) {
-        return null;
+        return sData.get(position).getName();
     }
 
     @Override
