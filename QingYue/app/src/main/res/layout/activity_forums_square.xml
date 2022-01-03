@@ -31,39 +31,39 @@
     <LinearLayout
         android:id="@+id/view_1"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="#CDCDCD"
-        android:layout_below="@+id/tv_qingyue">
+        android:layout_height="40dp"
+        android:layout_below="@+id/tv_qingyue"
+        android:background="#CDCDCD">
 
         <EditText
             android:id="@+id/edit_search"
             android:layout_width="350dp"
-            android:layout_height="25dp"
+            android:layout_height="35dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="2dp"
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@+id/btn_search"
+            android:layout_weight="0.9"
             android:background="@drawable/search"
             android:drawablePadding="5dp"
             android:gravity="center"
             android:hint="搜索"
             android:textColor="@color/black"
-            android:textColorHint="@color/gray"
-            android:layout_weight="0.9">
+            android:textColorHint="@color/gray">
 
         </EditText>
 
         <ImageButton
             android:id="@+id/btn_search"
-            android:layout_width="25dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="10dp"
+            android:layout_width="30dp"
+            android:layout_height="33dp"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.1"
             android:background="#CDCDCD"
             android:scaleType="fitXY"
-            android:src="@drawable/searchpic"
-            android:layout_weight="0.1">
+            android:src="@drawable/searchpic">
 
         </ImageButton>
 
