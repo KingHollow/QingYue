@@ -31,4 +31,18 @@ public class RUserFriendsDao {
         }
         return result;
     }
+
+    public boolean isFriend(int userId1, int userId2) {
+        DBconn.init();
+        String sql = "select * from r_user_friends where user1_id = " + userId1 + " and user2_id = " + userId2;
+        ResultSet rs = DBconn.selectSql(sql);
+        try {
+            if (rs.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

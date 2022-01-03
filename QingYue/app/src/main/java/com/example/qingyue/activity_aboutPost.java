@@ -3,12 +3,14 @@ package com.example.qingyue;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,6 +26,7 @@ import com.example.qingyue.utils.ImgIOJsonOutputUtils;
 import com.example.qingyue.utils.PostUtil;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
@@ -36,13 +39,14 @@ public class activity_aboutPost extends Activity {
     //下方三个按钮固定，三个方法
     //展示评论，init
 
-    String postid,o_repost,o_comment,o_like,username,content,posterPic,time,cardImg,cardTitle,cardContent;
+    String postid,o_repost,o_comment,o_like,username,content,posterPic,time,cardImg,cardTitle,cardContent,name;
     int n_repost,n_comment,n_like,type;
 
     ArrayList<Comment> commentdatalist = new ArrayList<Comment>();
-    TextView id,p_type;
+    TextView id,p_type,u_name;
     TextView like_num,repost_num,comment_num,p_username,p_time,p_content,author_username,o_content,songname,singername,singer;
-    ImageView head_picture,song_pic,singer_pic,commenter_pic;
+    ImageView song_pic,singer_pic,commenter_pic;
+    ImageButton head_picture;
     RelativeLayout relativeLayout1,p_song,p_singer;
     LinearLayout linearLayout1,linearLayout2,linearLayout3;
 
@@ -87,6 +91,8 @@ public class activity_aboutPost extends Activity {
     }
 
     private void init() {
+
+        commentdatalist.clear();
 
         String data1="";
         try {
@@ -162,6 +168,7 @@ public class activity_aboutPost extends Activity {
         }
         id = findViewById(R.id.postid);
         p_type = findViewById(R.id.type);
+        u_name = findViewById(R.id.u_name);
 
         like_num = findViewById(R.id.like_num);
         repost_num = findViewById(R.id.repost_num);
@@ -182,6 +189,7 @@ public class activity_aboutPost extends Activity {
 
         id.setText(postid);
         p_type.setText(String.valueOf(type));
+        u_name.setText(name);
         like_num.setText(o_like);
         repost_num.setText(o_repost);
         comment_num.setText(o_comment);
@@ -272,8 +280,6 @@ public class activity_aboutPost extends Activity {
         startActivityForResult(intent1,1);
     }
 
-    //todo: comment
-
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
 
@@ -320,5 +326,74 @@ public class activity_aboutPost extends Activity {
     }
 
     public void commentPost(View view) {
+        showDialog(view);
+    }
+
+    public void showDialog(View view) {
+        //显示对话框
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog dialog = builder.create();
+
+        View vd = View.inflate(this, R.layout.dialog_comment, null);
+        ImageButton ib_cancel = vd.findViewById(R.id.btn_back);
+        EditText et_content = vd.findViewById(R.id.comment);
+        ImageButton ib_send = vd.findViewById(R.id.send);
+
+        ib_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        ib_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String data="";
+                String content = et_content.getText().toString();
+                String postid = id.getText().toString();
+                User n_user = (User) getApplication();
+                try {
+                    data = "?username=" + URLEncoder.encode(n_user.getUserName(), "UTF-8") +
+                            "&postid=" + URLEncoder.encode(postid, "UTF-8") +
+                            "&content=" + URLEncoder.encode(content, "UTF-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                String addJson= PostUtil.doPost("postComment",data);
+
+                try {
+                    JSONObject jsonObject = new JSONObject(addJson);
+                    String result = jsonObject.getString("Result");
+                    if(result.equals("success")) {
+                        Toast.makeText(getApplicationContext(), "发送成功", Toast.LENGTH_LONG).show();
+                        init();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "发送失败", Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                dialog.dismiss();
+            }
+        });
+        dialog.setView(vd);
+        dialog.show();
+    }
+
+    public void aboutUser (View view) {
+        User n_user = (User) getApplication();
+
+        //判断一下，帖子详情展示的是不是当前用户的帖子，如果是，不跳转
+
+        if (n_user.getUserName().equals(username)) {
+            Intent intent = new Intent(getApplicationContext(), activity_AboutUser.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("username", username);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } else {
+            return;
+        }
     }
 }

@@ -63,7 +63,8 @@
         android:layout_marginRight="10dp"
         android:background="#FFFFFF"
         android:scaleType="fitXY"
-        android:onClick="Dislike">
+        android:onClick="Dislike"
+        android:visibility="gone">
 
     </ImageButton>
 </RelativeLayout>

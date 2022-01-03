@@ -272,4 +272,14 @@
         <servlet-name>chatListServlet</servlet-name>
         <url-pattern>/chatList</url-pattern>
     </servlet-mapping>
+
+    <servlet><!--servlet类路径配置-->
+        <servlet-name>isFriendServlet</servlet-name>
+        <servlet-class>com.javaweb.qingyue.servlet.isFriendServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>isFriendServlet</servlet-name>
+        <url-pattern>/isFriend</url-pattern>
+    </servlet-mapping>
 </web-app>

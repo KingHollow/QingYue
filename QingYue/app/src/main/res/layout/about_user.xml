@@ -41,8 +41,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/headpic">
+            android:layout_marginTop="10dp">
 
         </ImageView>
 
@@ -67,8 +66,7 @@
             android:layout_width="30dp"
             android:layout_height="33dp"
             android:layout_marginTop="15dp"
-            android:layout_toRightOf="@+id/Nickname"
-            android:src="@drawable/man">
+            android:layout_toRightOf="@+id/Nickname">
 
         </ImageView>
 
@@ -383,7 +381,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/scview_user"
-        android:onClick="addFriend"
+        android:onClick="deleteFriend"
         android:clickable="true"
         android:background="#FFFFFF"
         android:gravity="center"
@@ -404,7 +402,9 @@
             android:gravity="center"
             android:text="删除好友"
             android:textColor="#8a8a8a"
-            android:textSize="20sp">
+            android:textSize="20sp"
+            android:onClick="deleteFriend"
+            android:clickable="true">
 
         </TextView>
     </RelativeLayout>

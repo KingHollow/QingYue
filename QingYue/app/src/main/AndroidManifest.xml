@@ -14,6 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QingYue">
         <activity
+            android:name=".activity_UserPost"
+            android:exported="true" />
+        <activity
+            android:name=".activity_UserLikeSong"
+            android:exported="true" />
+        <activity
+            android:name=".activity_UserLikeSinger"
+            android:exported="true" />
+        <activity
+            android:name=".activity_AboutUser"
+            android:exported="true" />
+        <activity
             android:name=".activity_RecommendSinger"
             android:exported="true" />
         <activity

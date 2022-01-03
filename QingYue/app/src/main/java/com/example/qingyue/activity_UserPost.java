@@ -3,13 +3,12 @@ package com.example.qingyue;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -19,23 +18,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.qingyue.entity.Post;
-import com.example.qingyue.entity.Singer;
-import com.example.qingyue.entity.Song;
 import com.example.qingyue.entity.User;
-import com.example.qingyue.utils.ImgIOJsonOutputUtils;
 import com.example.qingyue.utils.PostUtil;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.List;
 
-public class activity_MinePost extends Activity {
+public class activity_UserPost extends Activity {
 
-    ArrayList<Post> postdatalist = new ArrayList<Post>();
+    List<Post> postdatalist = new ArrayList<Post>();
+    String n_username;
+
     private TextView id,type;
     private TextView o_id;
     RelativeLayout relativeLayout1,relativeLayout2;
@@ -43,19 +41,13 @@ public class activity_MinePost extends Activity {
     TextView like_num,repost_num,comment_num,username,time,content,author_username,o_content,songname,singername,singer;
     ImageView head_picture,song_pic,singer_pic;
 
-    String posterPic,o_time,o_cardImg,o_cardTitle,o_cardContent;
-    //    posterPic = "";
-//    o_time = "";
-//    o_cardImg = "";
-//    o_cardTitle = "";
-//    o_cardContent = "";
-    int o_likes,o_comments,o_reposts,o_type;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mine_post);
+        setContentView(R.layout.user_post);
+
+        Bundle bundle = this.getIntent().getExtras();
+        n_username = bundle.getString("username");
 
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -67,28 +59,21 @@ public class activity_MinePost extends Activity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-
-                //设置返回数据
-                activity_MinePost.this.setResult(RESULT_OK, intent);
-
-                //关闭Activity
-                activity_MinePost.this.finish();
+                activity_UserPost.this.finish();
             }
         });
 
         init();
-
-
     }
 
     private void init() {
-        User n_user = (User) getApplication();
+
+        postdatalist.clear();
 
         String data="";
         try {
-            data = "?username=" + URLEncoder.encode(n_user.getUserName(), "UTF-8") +
-            "&postid=0";
+            data = "?username=" + URLEncoder.encode(n_username, "UTF-8") +
+                    "&postid=0";
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -133,9 +118,9 @@ public class activity_MinePost extends Activity {
                 postdatalist.add(post);
             }
 
-            ListView postList = (ListView) findViewById(R.id.list_mine_post);
+            ListView postList = (ListView) findViewById(R.id.list_post);
 
-            MyPostAdapter adapter = new MyPostAdapter( postdatalist, activity_MinePost.this);
+            PostAdapter adapter = new PostAdapter( postdatalist, activity_UserPost.this);
             postList.setAdapter(adapter);
 
         } catch (org.json.JSONException e) {
@@ -143,7 +128,6 @@ public class activity_MinePost extends Activity {
         }
 
     }
-
 
     public void showPost(View view) {
 
@@ -193,70 +177,6 @@ public class activity_MinePost extends Activity {
         intent.putExtras(bundle1);//附带上额外的数据
         startActivityForResult(intent,1);
     }
-
-    public void deletePost(View view) {
-
-        showTypeDialog(view);
-
-    }
-
-    private void showTypeDialog(View view) {
-        //显示对话框
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        final AlertDialog dialog = builder.create();
-
-        View vd = View.inflate(this, R.layout.dialog_select_delete_post, null);
-        TextView yes = (TextView) vd.findViewById(R.id.tv_yes);
-        TextView no = (TextView) vd.findViewById(R.id.no);
-        yes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                id = view.findViewById(R.id.postid);
-
-                String data="";
-                try {
-                    data = "?postID=" + URLEncoder.encode(id.getText().toString(), "UTF-8");
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-
-                String deleteJson= PostUtil.doPost("deletePost",data);
-
-                try {
-
-                    JSONObject jsonObject = new JSONObject(deleteJson);
-
-
-                    String result = null;
-                    result = jsonObject.getString("Result");
-
-                    if (result.equals("success")) {
-                        //
-                        Toast.makeText(getApplicationContext(), "删除成功", Toast.LENGTH_LONG).show();
-
-                        init();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "删除失败", Toast.LENGTH_LONG).show();
-                    }
-
-                } catch (org.json.JSONException e) {
-                    e.printStackTrace();
-                }
-
-                dialog.dismiss();
-            }
-        });
-        no.setOnClickListener(new View.OnClickListener() {// 不修改
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.setView(vd);
-        dialog.show();
-    }
-
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
@@ -368,6 +288,5 @@ public class activity_MinePost extends Activity {
         intent1.putExtras(bundle1);//附带上额外的数据
         startActivityForResult(intent1,2);
     }
-
 
 }

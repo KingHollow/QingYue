@@ -64,6 +64,7 @@ public class friendRecommendServlet extends HttpServlet {
                     item.put("singerLike", "");
                 }
                 item.put("name", friend.getName());
+                item.put("nickName", friend.getNickname());
                 try {
                     item.put("pic", ImgIOJsonOutputUtils.encodeImage(friend.getHeadshoturl()));
                 } catch (IOException e) {
