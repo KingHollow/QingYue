@@ -11,8 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.qingyue.entity.Singer;
 import com.example.qingyue.entity.User;
 import com.example.qingyue.utils.ImgIOJsonOutputUtils;
 import com.example.qingyue.utils.PostUtil;
@@ -35,6 +37,7 @@ public class activity_RecommendSinger extends Activity {
     TextView tv_singername1, tv_singername2, tv_singername3;
     Set<JSONObject> resultJson = new HashSet<>();
     JSONArray jsonArray;
+    ListView lv_singerRcmd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +52,7 @@ public class activity_RecommendSinger extends Activity {
         btn_rcmd_friend = findViewById(R.id.btn_recommend_friend);
         btn_rcmd_song = findViewById(R.id.btn_recommend_song);
         ib_fresh = findViewById(R.id.fresh);
-        ib_singerpic1 = findViewById(R.id.btn_singer_picture_1);
-        ib_singerpic2 = findViewById(R.id.btn_singer_picture_2);
-        ib_singerpic3 = findViewById(R.id.btn_singer_picture_3);
-        tv_singername1 = findViewById(R.id.singer_name_1);
-        tv_singername2 = findViewById(R.id.singer_name_2);
-        tv_singername3 = findViewById(R.id.singer_name_3);
+        lv_singerRcmd = findViewById(R.id.lv_singerRcmd);
 
 
         btn_rcmd_friend.setOnClickListener(new View.OnClickListener() {
@@ -69,37 +67,6 @@ public class activity_RecommendSinger extends Activity {
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), activity_RecommendSong.class));
                 activity_RecommendSinger.this.finish();
-            }
-        });
-
-        ib_singerpic1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), activity_aboutSinger.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("singer", tv_singername1.getText().toString());
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-        });
-        ib_singerpic2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), activity_aboutSinger.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("singer", tv_singername2.getText().toString());
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-        });
-        ib_singerpic3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), activity_aboutSinger.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("singer", tv_singername3.getText().toString());
-                intent.putExtras(bundle);
-                startActivity(intent);
             }
         });
 
@@ -131,12 +98,26 @@ public class activity_RecommendSinger extends Activity {
             resultJson.add((JSONObject) jsonArray.get(random.nextInt(jsonArray.length())));
         }
         List<JSONObject> resultList = new ArrayList<>(resultJson);
-        ib_singerpic1.setImageBitmap(ImgIOJsonOutputUtils.base64ToBitmap(resultList.get(0).getString("pic")));
-        ib_singerpic2.setImageBitmap(ImgIOJsonOutputUtils.base64ToBitmap(resultList.get(1).getString("pic")));
-        ib_singerpic3.setImageBitmap(ImgIOJsonOutputUtils.base64ToBitmap(resultList.get(2).getString("pic")));
-        tv_singername1.setText(resultList.get(0).getString("name"));
-        tv_singername2.setText(resultList.get(1).getString("name"));
-        tv_singername3.setText(resultList.get(2).getString("name"));
+        ArrayList<Singer> singerList = new ArrayList<>();
+        for (int i = 0; i < resultList.size(); i++) {
+            Singer singer = new Singer();
+            singer.setPicString(resultList.get(i).getString("pic"));
+            singer.setName(resultList.get(i).getString("name"));
+            singerList.add(singer);
+        }
+
+        UserSingerAdapter adapter = new UserSingerAdapter(singerList, activity_RecommendSinger.this);
+        lv_singerRcmd.setAdapter(adapter);
+    }
+
+    public void aboutSinger(View view) {
+        TextView tv_singer_name = view.findViewById(R.id.singer_name);
+        String singerName = tv_singer_name.getText().toString();
+        Intent intent = new Intent(getApplicationContext(), activity_aboutSinger.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("singer", singerName);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     //homepage

@@ -39,7 +39,8 @@
             android:layout_height="30dp"
             android:background="@drawable/bg_recommend_click"
             android:text="歌手推荐"
-            android:layout_weight="1">
+            android:textColor="@color/gray"
+            android:layout_weight="1.1">
 
         </Button>
 
@@ -54,106 +55,28 @@
         </Button>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/user_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bottons"
-        android:orientation="vertical"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="80dp">
-
-        <ImageButton
-            android:id="@+id/btn_singer_picture_1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="fitXY"
-            android:background="@null">
-
-        </ImageButton>
-
-        <TextView
-            android:id="@+id/singer_name_1"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_singer_picture"
-            android:gravity="center"
-            android:text="周杰伦">
-
-        </TextView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/user_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bottons"
-        android:orientation="vertical"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="240dp">
-
-        <ImageButton
-            android:id="@+id/btn_singer_picture_2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="fitXY"
-            android:background="@null">
-
-        </ImageButton>
-
-        <TextView
-            android:id="@+id/singer_name_2"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_singer_picture"
-            android:gravity="center"
-            android:text="周杰伦">
-
-        </TextView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/user_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bottons"
-        android:orientation="vertical"
-        android:layout_marginTop="350dp"
-        android:layout_marginLeft="120dp">
-
-        <ImageButton
-            android:id="@+id/btn_singer_picture_3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="fitXY"
-            android:background="@null">
-
-        </ImageButton>
-
-        <TextView
-            android:id="@+id/singer_name_3"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_singer_picture"
-            android:gravity="center"
-            android:text="周杰伦">
-
-        </TextView>
-    </LinearLayout>
+   <ListView
+       android:id="@+id/lv_singerRcmd"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/bottons"
+       android:layout_marginBottom="5dp"
+       android:background="#FFFFFF"
+       android:scrollbars="vertical"/>
 
     <ImageButton
         android:id="@+id/fresh"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_above="@+id/bottom"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
         android:background="#FFFFFF"
-        android:scaleType="fitXY"
-        android:src="@drawable/refresh"
-        android:onClick="fresh"
         android:clickable="true"
-        android:focusable="true">
+        android:focusable="true"
+        android:onClick="fresh"
+        android:scaleType="fitXY"
+        android:src="@drawable/refresh">
 
     </ImageButton>
 

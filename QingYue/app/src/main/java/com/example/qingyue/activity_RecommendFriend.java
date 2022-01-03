@@ -10,11 +10,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.qingyue.entity.RcmdUser;
 import com.example.qingyue.entity.User;
 import com.example.qingyue.utils.ImgIOJsonOutputUtils;
 import com.example.qingyue.utils.PostUtil;
@@ -43,6 +46,7 @@ public class activity_RecommendFriend extends Activity {
     Set<JSONObject> resultJson = new HashSet<>();
     JSONArray jsonArray;
     ImageButton ib_fresh;
+    ListView lv_friendRcmd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,23 +60,8 @@ public class activity_RecommendFriend extends Activity {
 
         btn_rcmd_singer = findViewById(R.id.btn_recommend_singer);
         btn_rcmd_song = findViewById(R.id.btn_recommend_song);
-        iv_hp_mine = findViewById(R.id.head_picture_mine);
-        iv_hp1 = findViewById(R.id.head_picture_1);
-        iv_hp2 = findViewById(R.id.head_picture_2);
-        iv_hp3 = findViewById(R.id.head_picture_3);
-        tv_username1 = findViewById(R.id.user_name_1);
-        tv_chengdu1 = findViewById(R.id.user_chengdu_1);
-        tv_labels1 = findViewById(R.id.user_labels_1);
-        tv_singer1 = findViewById(R.id.like_singer_1);
-        tv_username2 = findViewById(R.id.user_name_2);
-        tv_chengdu2 = findViewById(R.id.user_chengdu_2);
-        tv_labels2 = findViewById(R.id.user_labels_2);
-        tv_singer2 = findViewById(R.id.like_singer_2);
-        tv_username3 = findViewById(R.id.user_name_3);
-        tv_chengdu3 = findViewById(R.id.user_chengdu_3);
-        tv_labels3 = findViewById(R.id.user_labels_3);
-        tv_singer3 = findViewById(R.id.like_singer_3);
         ib_fresh = findViewById(R.id.fresh);
+        lv_friendRcmd = findViewById(R.id.lv_friendRcmd);
 
 
         btn_rcmd_singer.setOnClickListener(new View.OnClickListener() {
@@ -87,37 +76,6 @@ public class activity_RecommendFriend extends Activity {
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), activity_RecommendSong.class));
                 activity_RecommendFriend.this.finish();
-            }
-        });
-
-        iv_hp1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), activity_AboutUser.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("username", tv_username1.getText().toString());
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-        });
-        iv_hp2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), activity_AboutUser.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("username", tv_username2.getText().toString());
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-        });
-        iv_hp3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), activity_AboutUser.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("username", tv_username3.getText().toString());
-                intent.putExtras(bundle);
-                startActivity(intent);
             }
         });
 
@@ -136,7 +94,6 @@ public class activity_RecommendFriend extends Activity {
         String friendJson= PostUtil.doPost("friendRecommend",data);
         try {
             JSONObject jsonObject = new JSONObject(friendJson);
-            iv_hp_mine.setImageBitmap(ImgIOJsonOutputUtils.base64ToBitmap(jsonObject.getString("headShot")));
             jsonArray = jsonObject.getJSONArray("friendList");
             initFriends(jsonArray);
         } catch (JSONException e) {
@@ -152,39 +109,36 @@ public class activity_RecommendFriend extends Activity {
             resultJson.add((JSONObject) jsonArray.get(random.nextInt(jsonArray.length())));
         }
         List<JSONObject> resultList = new ArrayList<>(resultJson);
-        iv_hp1.setImageBitmap(ImgIOJsonOutputUtils.base64ToBitmap(resultList.get(0).getString("pic")));
-        iv_hp2.setImageBitmap(ImgIOJsonOutputUtils.base64ToBitmap(resultList.get(1).getString("pic")));
-        iv_hp3.setImageBitmap(ImgIOJsonOutputUtils.base64ToBitmap(resultList.get(2).getString("pic")));
-        tv_username1.setText(resultList.get(0).getString("name"));
-        tv_username2.setText(resultList.get(1).getString("name"));
-        tv_username3.setText(resultList.get(2).getString("name"));
-        tv_chengdu1.setText("相似程度："+resultList.get(0).getString("similarity"));
-        tv_chengdu2.setText("相似程度："+resultList.get(1).getString("similarity"));
-        tv_chengdu3.setText("相似程度："+resultList.get(2).getString("similarity"));
-        List<String> labels1 = new ArrayList<>();
-        JSONArray jsonArray1 = resultList.get(0).getJSONArray("labels");
-        for (int i = 0; i < jsonArray1.length(); i++) {
-            labels1.add(jsonArray1.getString(i));
+        List<RcmdUser> friendList = new ArrayList<>();
+        for (int i = 0; i < resultList.size(); i++) {
+            RcmdUser rcmdUser = new RcmdUser();
+            rcmdUser.setHeadPicUrl(resultList.get(i).getString("pic"));
+            rcmdUser.setName(resultList.get(i).getString("name"));
+            rcmdUser.setSimilarity("相似程度："+resultList.get(i).getString("similarity"));
+            rcmdUser.setSingerLike("喜好歌手："+resultList.get(i).getString("singerLike"));
+            List<String> labels = new ArrayList<>();
+            JSONArray jsonArray1 = resultList.get(i).getJSONArray("labels");
+            for (int j = 0; j < jsonArray1.length(); j++) {
+                labels.add(jsonArray1.getString(j));
+            }
+            labels.removeAll(Collections.singleton(""));
+            rcmdUser.setLabels("标签："+ StringUtils.join(labels, "、"));
+            friendList.add(rcmdUser);
         }
-        labels1.removeAll(Collections.singleton(""));
-        tv_labels1.setText("标签："+ StringUtils.join(labels1, "、"));
-        List<String> labels2 = new ArrayList<>();
-        JSONArray jsonArray2 = resultList.get(1).getJSONArray("labels");
-        for (int i = 0; i < jsonArray2.length(); i++) {
-            labels2.add(jsonArray2.getString(i));
-        }
-        labels2.removeAll(Collections.singleton(""));
-        tv_labels2.setText("标签："+ StringUtils.join(labels2, "、"));
-        List<String> labels3 = new ArrayList<>();
-        JSONArray jsonArray3 = resultList.get(2).getJSONArray("labels");
-        for (int i = 0; i < jsonArray3.length(); i++) {
-            labels3.add(jsonArray3.getString(i));
-        }
-        labels3.removeAll(Collections.singleton(""));
-        tv_labels3.setText("标签："+ StringUtils.join(labels3, "、"));
-        tv_singer1.setText("喜好歌手："+resultList.get(0).getString("singerLike"));
-        tv_singer2.setText("喜好歌手："+resultList.get(1).getString("singerLike"));
-        tv_singer3.setText("喜好歌手："+resultList.get(2).getString("singerLike"));
+        RcmdFriendAdapter rcmdFriendAdapter = new RcmdFriendAdapter(friendList, activity_RecommendFriend.this);
+        lv_friendRcmd.setAdapter(rcmdFriendAdapter);
+        lv_friendRcmd.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView tv_name = view.findViewById(R.id.username);
+                String username = tv_name.getText().toString();
+                Intent intent = new Intent(getApplicationContext(), activity_AboutUser.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("username", username);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     //homepage
