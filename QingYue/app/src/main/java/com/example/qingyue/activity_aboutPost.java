@@ -24,6 +24,7 @@ import com.example.qingyue.entity.Post;
 import com.example.qingyue.entity.User;
 import com.example.qingyue.utils.ImgIOJsonOutputUtils;
 import com.example.qingyue.utils.PostUtil;
+import com.example.qingyue.utils.listViewUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -162,6 +163,7 @@ public class activity_aboutPost extends Activity {
 
             CommentAdapter adapter = new CommentAdapter( commentdatalist, activity_aboutPost.this);
             commentList.setAdapter(adapter);
+            listViewUtils.setListViewHeightBasedOnChildren(commentList);
 
         } catch (org.json.JSONException e) {
             e.printStackTrace();

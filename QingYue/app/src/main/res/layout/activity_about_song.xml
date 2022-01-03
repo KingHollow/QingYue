@@ -130,7 +130,6 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/bg_like_songorsinger"
         android:paddingBottom="5dp">
 
         <TextView
@@ -138,9 +137,10 @@
             android:layout_width="60dp"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="35dp"
             android:background="@drawable/bg_label_unclick"
             android:gravity="center"
-            android:textColor="@color/purple_200"
+            android:textColor="@color/gray"
             android:textSize="20sp">
 
         </TextView>
@@ -154,7 +154,7 @@
             android:layout_gravity="center"
             android:layout_toRightOf="@+id/its_label1"
             android:background="@drawable/bg_label_unclick"
-            android:textColor="@color/purple_200"
+            android:textColor="@color/gray"
             android:gravity="center"
             android:textSize="20sp">
 
@@ -168,7 +168,7 @@
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@+id/its_label2"
             android:background="@drawable/bg_label_unclick"
-            android:textColor="@color/purple_200"
+            android:textColor="@color/gray"
             android:gravity="center"
             android:textSize="20sp">
 

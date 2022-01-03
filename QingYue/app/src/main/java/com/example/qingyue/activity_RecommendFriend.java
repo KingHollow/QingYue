@@ -127,18 +127,16 @@ public class activity_RecommendFriend extends Activity {
         }
         RcmdFriendAdapter rcmdFriendAdapter = new RcmdFriendAdapter(friendList, activity_RecommendFriend.this);
         lv_friendRcmd.setAdapter(rcmdFriendAdapter);
-        lv_friendRcmd.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView tv_name = view.findViewById(R.id.username);
-                String username = tv_name.getText().toString();
-                Intent intent = new Intent(getApplicationContext(), activity_AboutUser.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("username", username);
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-        });
+    }
+
+    public void aboutUser(View view) {
+        TextView tv_username = view.findViewById(R.id.username);
+        String username = tv_username.getText().toString();
+        Intent intent = new Intent(getApplicationContext(), activity_AboutUser.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("username", username);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     //homepage
